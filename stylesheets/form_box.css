@@ -1,0 +1,11 @@
+.boxed {
+  border: 1px solid green;
+  border-width: 20px;
+  text-align: center;
+}
+
+.radio-button {
+  padding: 0;
+  overflow: hidden;
+  /* now it minds floatting element in and aside it */
+}
