@@ -1,51 +1,55 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+<link rel="stylesheet" href="stylesheets/bootstrap.css">
+<link rel="stylesheet" href="stylesheets/form_box.css">
 
 <html>
-
+<br><br><br><br><br><br><br><br><br><br>
 <body style="background-color:black;">
-  <div class="signup-container">
-    <div class="signup-content-location">
-      <div class="step-container">
-        <form class="step inset location">
-          <section class="title">
+  <div class="boxed">
+    <div class="signup-container">
+      <div class="signup-content-location">
+        <div class="step-container">
+          <form class="step inset location">
+            <section class="title">
 
-            <body style="background-color:black;">
-              <div class="step-container">
-                <div class="step inset location-scopeJ">
-                  <section class="title">
-                    <h1 style="color:white;font-size:30px;" class="glyph-location">
-                      Where are you ?
-                    </h1>
-                  </section>
+              <body style="background-color:black;">
+                <div class="step-container">
+                  <div class="step inset location-scopeJ">
+                    <section class="title">
+                      <h1 style="color:orange;font-size:30px;" class="glyph-location">
+                        Where are you ?
+                      </h1>
+                    </section>
 
-                  <section class="search-field glyph-location">
-                    <input type="text" class="input large fullwidth" placeholder="Enter your location" autocomplete="off">
-                    <div class="message">
-                      <p style="color:white" class="text small">Enter your location helps people find your geography.</p>
-                      <button onclick="location.href='name_signup.html'" type="button">
-                        < Prev </button> <button style="margin:20px;" type="reset" class="btn btn-default">Reset
+                    <section class="search-field glyph-location">
+                      <input type="text" class="input large fullwidth" placeholder="Enter your location" autocomplete="off">
+                      <div class="message">
+                        <p style="color:orange" class="text small">Enter your location helps people find your geography.</p>
+                        <button onclick="location.href='name_signup.html'" type="button">
+                          < Prev </button> <button style="margin:20px;" type="reset">Reset
+                        </button>
+                        <button style="margin:10px;" onclick="location.href='index.html'" type="button"> Home </button>
+                    </section>
+
+                    <section>
+                      <div id="greetings_msg" class="modal">
+                        <p>Thank you for your registration !!! <br>
+                          Now you can use our FEATURES to edit your profile.</p>
+                        <a href="index.html">Close</a>
+                      </div>
+                      <br>
+                      <br>
+
+                      <!-- Link to open the modal -->
+                      <button type="submit">
+                        <p><a href="#greetings_msg" rel="modal:open">Subscribe</a></p>
                       </button>
-                      <button style="margin:10px;" onclick="location.href='index.html'" type="button"> Home </button>
-                  </section>
-
-                  <section>
-                    <div id="greetings_msg" class="modal">
-                      <p>Thank you for your registration !!! <br>
-                        Now you can use our FEATURES to edit your profile.</p>
-                      <a href="index.html">Close</a>
-                    </div>
-                    <br>
-                    <br>
-
-                    <!-- Link to open the modal -->
-                    <button type="submit">
-                      <p><a href="#greetings_msg" rel="modal:open">Subscribe</a></p>
-                    </button>
-                  </section>
-                  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-                  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+                    </section>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+                  </div>
                 </div>
-              </div>
+        </div>
       </div>
     </div>
   </div>
