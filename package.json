@@ -1,0 +1,28 @@
+{
+  "name": "cpsc349-project1",
+  "version": "1.0.0",
+  "description": "This is a project for Web Front-end Development (CPSC 349)",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "parcel ./src/*.html --open",
+    "build": "parcel build ./src/*.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nhoang53/CPSC349-Project1.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nhoang53/CPSC349-Project1/issues"
+  },
+  "homepage": "https://github.com/nhoang53/CPSC349-Project1#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.3"
+  },
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "bootswatch": "^4.3.1",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.15.0"
+  }
+}
