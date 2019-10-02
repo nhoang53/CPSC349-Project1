@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="stylesheets/bootstrap.css">
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -23,17 +25,26 @@
             <span class="navbar-toggler-icon"></span>
           </button>
 
-          <div class="collapse navbar-collapse" id="navbarColor03">
+          <div class="collapse navbar-collapse" id="navbarColor02">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">About</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="#">Features</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="login.html">Login</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="./pricing.html">Pricing</a>
               </li>
             </ul>
-            <button class="btn btn-info btn-sm">
-              Create Your Portfolio
+            <button class="btn btn-info btn-sm" onclick="window.location.href='signup.html';">
+              Get Your Free Page
             </button>
           </div>
         </nav>
@@ -43,8 +54,8 @@
             <div class="col-md-6">
               <h2>Show the world what you can do.</h2>
               <div class="mb-4">Create a page to show off your projects.</div>
-              <button class="btn btn-info btn-block">
-                Create Your Portfolio
+              <button class="btn btn-info btn-block" onclick="window.location.href='signup.html';">
+                Get Your Free Page
               </button>
             </div>
           </div>
@@ -98,7 +109,7 @@
           <div class="row">
             <div class="col-md-6 mx-auto">
               <h2 class="text-center">Ready to show what you can do?</h2>
-              <button class="btn btn-secondary btn-block">
+              <button class="btn btn-secondary btn-block" onclick="window.location.href='signup.html';">
                 Create Your Portfolio
               </button>
             </div>
@@ -140,6 +151,9 @@
       </div>
     </footer>
 
-    <script src="./index.js"></script>
+    <script src="scripts/index.js"></script>
+    <script src="scripts/pricing.js"></script>
+    <script src="scripts/shared.js"></script>
+    <script src="scripts/client.js"></script>
   </body>
 </html>
