@@ -1,52 +1,90 @@
 <link rel="stylesheet" href="stylesheets/bootstrap.css">
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Portfolio Creator | Sign Up</title>
+</head>
+
 <body>
-<div class="container">
-<form>
-  <fieldset>
-    <div class="form-group">
-      <center> <legend>Sign Me Up!</legend> </center>
-      <label>What's your First Name?</label>
-      <input type="text" class="form-control" placeholder="Firstname" name="first" size="4"size="4"  required>
-    </div>
-    <div class="form-group">
-      <label>What's your Last Name?</label>
-      <input type="text" class="form-control" placeholder="Lastname" name="last" size="4" required>
-    </div>
-    <div class="form-group">
-      <label>Choose your Username?</label>
-      <input type="text" class="form-control" placeholder="Username" name="uid" size="4" required>
-    </div>
-    <div class="form-group">
-      <label>Sign in with your email</label>
-      <input type="email" class="form-control" placeholder="Enter your Email address" name="mail" required>
-    </div>
-    <div class="form-group">
-      <label>Choose your Password</label>
-      <input type="password" class="form-control" placeholder="Password" name="pwd" required>
-    </div>
-    <div class="form-group">
-      <label>Confirm your Password</label>
-      <input type="password" class="form-control" placeholder="Repeat Password" name="pwd-repeat" required>
-    </div>
-    <div class="form-group">
-      <label>Where are you ?</label>
-      <input type="text" class="form-control" placeholder="Location" name="location" required>
-    </div>
-    <div class="form-group">
-      <label>What do you love ?</label>
-      <input type="text" class="form-control" placeholder="Enter three to five interests" name="love" required>
-    </div>
-    <div class="form-group">
-      <label>What do you do ?</label>
-      <input type="text" class="form-control" placeholder="Enter your occupation or hobby" name="do" required>
-    </div>
-    <div class="form-group">
-      <label>Enter a link to share</label>
-      <input type="text" class="form-control" placeholder="Example.com" name="ulink" required>
-    </div>
-    </fieldset>
-    <button type="submit" class="btn btn-primary" type="submit" name="signup-submit">Sign Up</button>
-</form>
-</div>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="./index.html">Portfolio Creator</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarColor03">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Features</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="pricing.html">Pricing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login.html">Login</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <br>
+  <div class="container">
+    <form>
+      <fieldset>
+        <div class="form-group">
+          <center>
+            <legend>Sign Me Up!</legend>
+          </center>
+          <label>What's your First Name?</label>
+          <input type="text" class="form-control" placeholder="Firstname" name="first" size="4" size="4" required>
+        </div>
+        <div class="form-group">
+          <label>What's your Last Name?</label>
+          <input type="text" class="form-control" placeholder="Lastname" name="last" size="4" required>
+        </div>
+        <div class="form-group">
+          <label>Choose your Username?</label>
+          <input type="text" class="form-control" placeholder="Username" name="uid" size="4" required>
+        </div>
+        <div class="form-group">
+          <label>Sign in with your email</label>
+          <input type="email" class="form-control" placeholder="Enter your Email address" name="mail" required>
+        </div>
+        <div class="form-group">
+          <label>Choose your Password</label>
+          <input type="password" class="form-control" placeholder="Password" name="pwd" required>
+        </div>
+        <div class="form-group">
+          <label>Confirm your Password</label>
+          <input type="password" class="form-control" placeholder="Repeat Password" name="pwd-repeat" required>
+        </div>
+        <div class="form-group">
+          <label>Where are you ?</label>
+          <input type="text" class="form-control" placeholder="Location" name="location" required>
+        </div>
+        <div class="form-group">
+          <label>What do you love ?</label>
+          <input type="text" class="form-control" placeholder="Enter three to five interests" name="love" required>
+        </div>
+        <div class="form-group">
+          <label>What do you do ?</label>
+          <input type="text" class="form-control" placeholder="Enter your occupation or hobby" name="do" required>
+        </div>
+        <div class="form-group">
+          <label>Enter a link to share</label>
+          <input type="text" class="form-control" placeholder="Example.com" name="ulink" required>
+        </div>
+      </fieldset>
+      <br>
+      <button type="submit" class="btn btn-primary" type="submit" name="signup-submit">Sign Up</button>
+    </form>
+  </div>
 </body>
+
+</html>
