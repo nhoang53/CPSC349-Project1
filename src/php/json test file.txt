@@ -1,0 +1,15 @@
+create user
+
+{
+    "username" : "Amazing",
+    "userRole" : "customer user",
+    "firstName" : "John",
+    "lastName" : "Bouhon",
+    "email" : "testing@php.com",
+    "password" : "123456",
+    "location" : "Fullerton",
+    "love" : "badminton pool table",
+    "do" : "front end web development",
+    "userLink" : "youtube.com",
+    "photo" : "img/123.jpg"
+}
