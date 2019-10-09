@@ -11,19 +11,51 @@ export default class RegisterPage extends Component {
           <Card>
             <Card.Body>
               <Form>
+              <Row className="mb-4">
+                <Col>
+                  <Form.Control type="text" placeholder="Username" />
+                </Col>
+              </Row>
+              <Row className="mb-4">
+                <Col>
+                  <Form.Control type="text" placeholder="Account Type" />
+                </Col>
+              </Row>
+              <Row className="mb-4">
+                <Col>
+                  <Form.Control type="text" placeholder="First Name" />
+                </Col>
+                <Col>
+                  <Form.Control type="text" placeholder="Last Name" />
+                </Col>
+              </Row>
                 <Row className="mb-4">
                   <Col>
-                    <Form.Control type="email" placeholder="Email address" />
-                  </Col>
-                </Row>
-                <Row>
-                  <Col>
-                    <Form.Control placeholder="First name" />
+                    <Form.Control type="email" placeholder="Email Address" />
                   </Col>
                   <Col>
-                    <Form.Control placeholder="Last name" />
+                    <Form.Control type="password" placeholder="Password" />
                   </Col>
                 </Row>
+                <Row className="mb-4">
+                  <Col>
+                    <Form.Control type="text" placeholder="Location" />
+                  </Col>
+                </Row>
+                <Row className="mb-4">
+                  <Col>
+                    <Form.Control type="text" placeholder="Love" />
+                  </Col>
+                  <Col>
+                    <Form.Control type="text" placeholder="Occupation" />
+                  </Col>
+                </Row>
+                <Row className="mb-4">
+                  <Col>
+                    <Form.Control type="text" placeholder="Link To Share" />
+                  </Col>
+                </Row>
+                <button type="submit" class="btn btn-primary" name="signup-submit">Sign Up</button>
               </Form>
             </Card.Body>
           </Card>
