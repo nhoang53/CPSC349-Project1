@@ -25,8 +25,14 @@ class NavBar extends Component {
             <LinkContainer exact to="/features">
               <Nav.Link>Features</Nav.Link>
             </LinkContainer>
+            <LinkContainer exact to="/login">
+              <Nav.Link>Login</Nav.Link>
+            </LinkContainer>
             <LinkContainer exact to="/pricing">
               <Nav.Link>Pricing</Nav.Link>
+            </LinkContainer>
+            <LinkContainer exact to="/contact">
+              <Nav.Link>Contact</Nav.Link>
             </LinkContainer>
             <Button
               variant="info"
