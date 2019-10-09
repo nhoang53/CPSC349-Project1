@@ -10,6 +10,5 @@ _Make sure you have git install in your system._
 2. `cd` into your projects folder
 3. Clone repository: `git clone https://github.com/nhoang53/CPSC349-Project1.git`
 4. Go to CPSC349-Project1: `cd CPSC349-Project1`
-5. Install dependencies: `npm install`
-6. `cd` into the appropiate folder
-7. Add your contributions
+5. `cd` into the appropiate folder
+6. Add your contributions
