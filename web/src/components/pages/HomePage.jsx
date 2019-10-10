@@ -23,7 +23,9 @@ class HomePage extends Component {
             <Row className="py-5">
               <Col md="6">
                 <h2 className="text-light">Show the world what you can do.</h2>
-                <div class="mb-4">Create a page to show off your projects.</div>
+                <div className="mb-4">
+                  Create a page to show off your projects.
+                </div>
                 <Button variant="info" block onClick={this.toRegistration}>
                   Create your portfolio
                 </Button>
@@ -36,7 +38,7 @@ class HomePage extends Component {
           <Container>
             <Row className="py-5">
               <Col md="4">
-                <h3 class="text-center">Feature 1</h3>
+                <h3 className="text-center">Feature 1</h3>
                 <p>
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                   Distinctio, necessitatibus aspernatur veniam repellendus modi
@@ -46,7 +48,7 @@ class HomePage extends Component {
                 </p>
               </Col>
               <Col md="4">
-                <h3 class="text-center">Feature 2</h3>
+                <h3 className="text-center">Feature 2</h3>
                 <p>
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                   Distinctio, necessitatibus aspernatur veniam repellendus modi
@@ -56,7 +58,7 @@ class HomePage extends Component {
                 </p>
               </Col>
               <Col md="4">
-                <h3 class="text-center">Feature 3</h3>
+                <h3 className="text-center">Feature 3</h3>
                 <p>
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                   Distinctio, necessitatibus aspernatur veniam repellendus modi
@@ -77,7 +79,7 @@ class HomePage extends Component {
             <Container className="py-5">
               <Row>
                 <Col md="6" className="mx-auto">
-                  <h2 class="text-center">
+                  <h2 className="text-center">
                     BUILD YOUR OWN ONLINE PORTFOLIO WEBSITE
                   </h2>
                   <Button
