@@ -13,17 +13,17 @@ export default class RegisterPage extends Component {
               <Form>
               <Row className="mb-4">
                 <Col>
-                  <Form.Control type="text" placeholder="Name" />
+                  <Form.Control type="text" name="firstName" placeholder="First Name" />
                 </Col>
               </Row>
               <Row className="mb-4">
                 <Col>
-                  <Form.Control type="text" placeholder="Email" />
+                  <Form.Control type="text" name="email" placeholder="Email" />
                 </Col>
               </Row>
               <Row className="mb-4">
                 <Col>
-                  <Form.Control type="textarea" rows="5" cols="50" placeholder="Message" />
+                  <Form.Control type="text" rows="5" cols="50" name="message" placeholder="Message" />
                 </Col>
               </Row>
                 <button type="submit" class="btn btn-primary" name="contact-submit">Submit</button>

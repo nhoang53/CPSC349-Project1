@@ -13,46 +13,46 @@ export default class RegisterPage extends Component {
               <Form>
               <Row className="mb-4">
                 <Col>
-                  <Form.Control type="text" placeholder="Username" />
+                  <Form.Control type="text" name="username" placeholder="Username" />
                 </Col>
               </Row>
               <Row className="mb-4">
                 <Col>
-                  <Form.Control type="text" placeholder="Account Type" />
+                  <Form.Control type="text" name="userRole" placeholder="Account Type" />
                 </Col>
               </Row>
               <Row className="mb-4">
                 <Col>
-                  <Form.Control type="text" placeholder="First Name" />
+                  <Form.Control type="text" name="firstName" placeholder="First Name" />
                 </Col>
                 <Col>
-                  <Form.Control type="text" placeholder="Last Name" />
+                  <Form.Control type="text" name="lastName" placeholder="Last Name" />
                 </Col>
               </Row>
                 <Row className="mb-4">
                   <Col>
-                    <Form.Control type="email" placeholder="Email Address" />
+                    <Form.Control type="email" name="email" placeholder="Email Address" />
                   </Col>
                   <Col>
-                    <Form.Control type="password" placeholder="Password" />
-                  </Col>
-                </Row>
-                <Row className="mb-4">
-                  <Col>
-                    <Form.Control type="text" placeholder="Location" />
+                    <Form.Control type="password" name="password" placeholder="Password" />
                   </Col>
                 </Row>
                 <Row className="mb-4">
                   <Col>
-                    <Form.Control type="text" placeholder="Love" />
-                  </Col>
-                  <Col>
-                    <Form.Control type="text" placeholder="Occupation" />
+                    <Form.Control type="text" name="location" placeholder="Location" />
                   </Col>
                 </Row>
                 <Row className="mb-4">
                   <Col>
-                    <Form.Control type="text" placeholder="Link To Share" />
+                    <Form.Control type="text" name="love" placeholder="Love" />
+                  </Col>
+                  <Col>
+                    <Form.Control type="text" name="do" placeholder="Occupation" />
+                  </Col>
+                </Row>
+                <Row className="mb-4">
+                  <Col>
+                    <Form.Control type="text" name="userLink" placeholder="Link To Share" />
                   </Col>
                 </Row>
                 <button type="submit" class="btn btn-primary" name="signup-submit">Sign Up</button>
