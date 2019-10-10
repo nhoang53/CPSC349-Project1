@@ -13,12 +13,12 @@ export default class RegisterPage extends Component {
               <Form>
               <Row className="mb-4">
                 <Col>
-                  <Form.Control type="text" name="username" placeholder="Username" />
+                  <Form.Control type="text" name="username" placeholder="Username" required />
                 </Col>
               </Row>
               <Row className="mb-4">
                 <Col>
-                  <Form.Control type="password" name="password" placeholder="Password" />
+                  <Form.Control type="password" name="password" placeholder="Password" required />
                 </Col>
               </Row>
 
