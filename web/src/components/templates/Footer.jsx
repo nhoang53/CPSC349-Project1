@@ -8,9 +8,11 @@ export default class Footer extends Component {
       <footer>
         <Jumbotron className="mb-0">
           <Row>
-            <Col md="3">Portfolio Creator</Col>
-            <Col md="3">
-              <h6>Product</h6>
+            <Col md="3" className="mb-4 mb-md-0 text-center">
+              Portfolio Center
+            </Col>
+            <Col md="3" className="text-center text-md-left mb-4 mb-md-0">
+              <h6 className="border-bottom pb-2">Product</h6>
               <Nav className="flex-column">
                 <LinkContainer exact to="/features">
                   <Nav.Link>Features</Nav.Link>
@@ -20,15 +22,18 @@ export default class Footer extends Component {
                 </LinkContainer>
               </Nav>
             </Col>
-            <Col md="3">
-              <h6>Company</h6>
+            <Col md="3" className="text-center text-md-left mb-4 mb-md-0">
+              <h6 className="border-bottom pt-md-0 py-2">Company</h6>
               <Nav className="flex-column">
-                <LinkContainer exact to="/features">
+                <LinkContainer exact to="/about">
                   <Nav.Link>About Us</Nav.Link>
+                </LinkContainer>
+                <LinkContainer exact to="/contact">
+                  <Nav.Link>Contact Us</Nav.Link>
                 </LinkContainer>
               </Nav>
             </Col>
-            <Col md="3" className="text-right">
+            <Col md="3" className="text-center text-md-right">
               &copy; 2019 Burden United
             </Col>
           </Row>

@@ -13,31 +13,28 @@ class NavBar extends Component {
 
   render() {
     return (
-      <Navbar expand="lg" className="text-uppercase" bg="dark" variant="dark">
+      <Navbar expand="md" className="text-uppercase" bg="dark" variant="dark">
         <LinkContainer exact to="/">
-          <Navbar.Brand>Portfolio Creator</Navbar.Brand>
+          <Navbar.Brand>Portfolio Center</Navbar.Brand>
         </LinkContainer>
 
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ml-auto">
-            <LinkContainer exact to="/features">
+            <LinkContainer to="/features">
               <Nav.Link>Features</Nav.Link>
             </LinkContainer>
-            <LinkContainer exact to="/login">
-              <Nav.Link>Login</Nav.Link>
-            </LinkContainer>
-            <LinkContainer exact to="/pricing">
+            <LinkContainer to="/pricing">
               <Nav.Link>Pricing</Nav.Link>
             </LinkContainer>
-            <LinkContainer exact to="/contact">
-              <Nav.Link>Contact</Nav.Link>
+            <LinkContainer to="/login">
+              <Nav.Link>Login</Nav.Link>
             </LinkContainer>
             <Button
               variant="info"
               size="sm"
-              className="ml-lg-4"
+              className="ml-md-4"
               onClick={() => {
                 this.props.history.push("/register");
               }}
