@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Container, Card, Form, Row, Col, Button } from "react-bootstrap";
 
-export default class RegisterPage extends Component {
+export default class ContactPage extends Component {
   render() {
     return (
       <main role="main">

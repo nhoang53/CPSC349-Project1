@@ -1,8 +1,32 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Container, Card, Form, Row, Col, Button } from "react-bootstrap";
+import {
+  Container,
+  Card,
+  Form,
+  Row,
+  Col,
+  Button,
+  Spinner
+} from "react-bootstrap";
 
-export default class RegisterPage extends Component {
+export default class LoginPage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      checking: false
+    };
+  }
+
+  onSubmit = event => {
+    event.preventDefault();
+
+    this.setState({ checking: true });
+
+    console.log("Call api to check to get token");
+  };
+
   render() {
     return (
       <main role="main">
@@ -11,13 +35,13 @@ export default class RegisterPage extends Component {
 
           <Card>
             <Card.Body>
-              <Form>
+              <Form onSubmit={this.onSubmit}>
                 <Row className="mb-4">
                   <Col>
                     <Form.Control
-                      type="text"
-                      name="username"
-                      placeholder="Username"
+                      type="email"
+                      name="email"
+                      placeholder="Email"
                       required
                     />
                   </Col>
@@ -41,6 +65,13 @@ export default class RegisterPage extends Component {
                     />
                   </Col>
                 </Row>
+                {this.state.checking && (
+                  <Row className="mb-4 text-center">
+                    <Col>
+                      <Spinner animation="grow" />
+                    </Col>
+                  </Row>
+                )}
                 <Row>
                   <Col className="text-center">
                     <Button
