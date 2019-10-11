@@ -11,22 +11,48 @@ export default class RegisterPage extends Component {
           <Card>
             <Card.Body>
               <Form>
-              <Row>
-                <Col md="6" className="mb-4">
-                  <Form.Control placeholder="First name" name="firstName" required />
+              <Row className="mb-4">
+                <Col>
+                  <Form.Control type="text" placeholder="Username"  name="username" required />
                 </Col>
-                <Col md="6">
-                  <Form.Control placeholder="Last name" name="lastName" required />
+              </Row>
+              <Row className="mb-4">
+                <Col>
+                  <Form.Control type="text" placeholder="Account Type" name="userRole" required />
+                </Col>
+              </Row>
+              <Row className="mb-4">
+                <Col>
+                  <Form.Control type="text" placeholder="First Name" name="firstName" required />
+                </Col>
+                <Col>
+                  <Form.Control type="text" placeholder="Last Name" name="lastName" required />
                 </Col>
               </Row>
                 <Row className="mb-4">
                   <Col>
-                    <Form.Control type="email" placeholder="Email address"  name="email" required />
+                    <Form.Control type="email" placeholder="Email Address" name="email" required />
+                  </Col>
+                  <Col>
+                    <Form.Control type="password" placeholder="Password" name="password" required />
                   </Col>
                 </Row>
                 <Row className="mb-4">
                   <Col>
-                    <Form.Control type="password" placeholder="Password" name="password" required />
+                    <Form.Control type="text" placeholder="Location" name="location" required />
+                  </Col>
+                </Row>
+                <Row className="mb-4">
+                  <Col>
+                    <Form.Control type="text" placeholder="Love" name="love" required />
+                  </Col>
+                  <Col>
+                    <Form.Control type="text" placeholder="Occupation" name="do" required />
+                  </Col>
+                </Row>
+                <Row className="mb-4">
+                  <Col>
+                    <Form.Control type="text" placeholder="Link To Share" name="userLink" required />
                   </Col>
                 </Row>
                 <Row>
@@ -34,6 +60,7 @@ export default class RegisterPage extends Component {
                     <Button
                       className="mb-4"
                       variant="primary"
+					  name="signup-submit"
                       type="submit"
                       block
                     >
