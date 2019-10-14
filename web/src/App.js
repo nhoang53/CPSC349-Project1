@@ -11,6 +11,7 @@ import RegisterPage from "./components/pages/RegisterPage";
 import LoginPage from "./components/pages/LoginPage";
 import ContactPage from "./components/pages/ContactPage";
 import ForgotPasswordPage from "./components/pages/ForgotPasswordPage";
+import BonusPage from "./components/pages/BonusPage";
 
 import Footer from "./components/templates/Footer";
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="/login" component={LoginPage} />
         <Route path="/contact" component={ContactPage} />
         <Route path="/forgot-password" component={ForgotPasswordPage} />
+        <Route path="/bonus" component={BonusPage} />
         <Route exact path="/" component={HomePage} />
         <Redirect to="/not-found" />
       </Switch>
