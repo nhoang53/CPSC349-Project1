@@ -3,6 +3,13 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 import { Container, Row, Col, Button, Jumbotron } from "react-bootstrap";
+import BackGround from 'components/images/background2.gif'
+import Free from 'components/images/free.jpg'
+import Domain from 'components/images/domain.jpg'
+import LinkShare from 'components/images/linkShare.jpg'
+import ProductContent from 'components/images/productContent5.jpg'
+
+
 
 class HomePage extends Component {
   static propTypes = {
@@ -20,6 +27,7 @@ class HomePage extends Component {
       <React.Fragment>
         <header className="bg-dark text-light">
           <Container className="py-5">
+          <img src={BackGround} alt="Background Image"/>
             <Row className="py-5">
               <Col md="6">
                 <h2 className="text-light">Show the world what you can do.</h2>
@@ -38,34 +46,25 @@ class HomePage extends Component {
           <Container>
             <Row className="py-5">
               <Col md="4">
-                <h3 className="text-center">Feature 1</h3>
+                <h3 className="text-center">Free To Use</h3>
                 <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Distinctio, necessitatibus aspernatur veniam repellendus modi
-                  culpa dolores cumque sapiente explicabo ad perferendis
-                  doloribus ex. Commodi eius excepturi, libero necessitatibus
-                  enim voluptatibus.
+                  Make it easy for your audience to take action on what is most important to you.
                 </p>
+                <img src={Free} alt="Free To Use"/>
               </Col>
               <Col md="4">
-                <h3 className="text-center">Feature 2</h3>
+                <h3 className="text-center">Professional Domain</h3>
                 <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Distinctio, necessitatibus aspernatur veniam repellendus modi
-                  culpa dolores cumque sapiente explicabo ad perferendis
-                  doloribus ex. Commodi eius excepturi, libero necessitatibus
-                  enim voluptatibus.
+                  Add a secure, custon domain to your page. Or, map one you already own.
                 </p>
+                  <img src={Domain} alt="Professional Domain"/>
               </Col>
               <Col md="4">
-                <h3 className="text-center">Feature 3</h3>
+                <h3 className="text-center">One Link To Share</h3>
                 <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Distinctio, necessitatibus aspernatur veniam repellendus modi
-                  culpa dolores cumque sapiente explicabo ad perferendis
-                  doloribus ex. Commodi eius excepturi, libero necessitatibus
-                  enim voluptatibus.
+                  Use your link everywhere, online and offline, to promote yourself.
                 </p>
+                <img src={LinkShare} alt="Link To Share"/>
               </Col>
             </Row>
             <Row className="mb-5">
@@ -79,6 +78,7 @@ class HomePage extends Component {
             <Container className="py-5">
               <Row>
                 <Col md="6" className="mx-auto">
+                  <img src={ProductContent} alt="Product Content"/>
                   <h2 className="text-center">
                     BUILD YOUR OWN ONLINE PORTFOLIO WEBSITE
                   </h2>
