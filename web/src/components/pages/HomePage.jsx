@@ -27,7 +27,7 @@ class HomePage extends Component {
       <React.Fragment>
         <header className="bg-dark text-light">
           <Container className="py-5">
-          <img src={BackGround} alt="Background Image"/>
+          <img src={BackGround} />
             <Row className="py-5">
               <Col md="6">
                 <h2 className="text-light">Show the world what you can do.</h2>
@@ -50,21 +50,21 @@ class HomePage extends Component {
                 <p>
                   Make it easy for your audience to take action on what is most important to you.
                 </p>
-                <img src={Free} alt="Free To Use"/>
+                <img src={Free} />
               </Col>
               <Col md="4">
                 <h3 className="text-center">Professional Domain</h3>
                 <p>
                   Add a secure, custon domain to your page. Or, map one you already own.
                 </p>
-                  <img src={Domain} alt="Professional Domain"/>
+                  <img src={Domain} />
               </Col>
               <Col md="4">
                 <h3 className="text-center">One Link To Share</h3>
                 <p>
                   Use your link everywhere, online and offline, to promote yourself.
                 </p>
-                <img src={LinkShare} alt="Link To Share"/>
+                <img src={LinkShare} />
               </Col>
             </Row>
             <Row className="mb-5">
@@ -78,7 +78,7 @@ class HomePage extends Component {
             <Container className="py-5">
               <Row>
                 <Col md="6" className="mx-auto">
-                  <img src={ProductContent} alt="Product Content"/>
+                  <img src={ProductContent} />
                   <h2 className="text-center">
                     BUILD YOUR OWN ONLINE PORTFOLIO WEBSITE
                   </h2>
