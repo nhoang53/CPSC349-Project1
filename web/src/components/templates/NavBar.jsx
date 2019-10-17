@@ -28,12 +28,6 @@ class NavBar extends Component {
             <LinkContainer to="/pricing">
               <Nav.Link>Pricing</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/contact">
-              <Nav.Link>Contact</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to="/bonus">
-              <Nav.Link>Bonus</Nav.Link>
-            </LinkContainer>
             <LinkContainer to="/login">
               <Nav.Link>Login</Nav.Link>
             </LinkContainer>

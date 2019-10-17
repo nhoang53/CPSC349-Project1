@@ -31,9 +31,6 @@ export default class Footer extends Component {
                 <LinkContainer exact to="/contact">
                   <Nav.Link>Contact Us</Nav.Link>
                 </LinkContainer>
-                <LinkContainer exact to="/bonus">
-                  <Nav.Link>Bonus</Nav.Link>
-                </LinkContainer>
               </Nav>
             </Col>
             <Col md="3" className="text-center text-md-right">

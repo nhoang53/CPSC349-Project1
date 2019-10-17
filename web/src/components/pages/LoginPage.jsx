@@ -7,6 +7,7 @@ import {
   Row,
   Col,
   Button,
+  Alert,
   Spinner
 } from "react-bootstrap";
 
@@ -15,14 +16,28 @@ export default class LoginPage extends Component {
     super(props);
 
     this.state = {
-      checking: false
+      checking: false,
+      validEmail: true,
+      validPassword: true,
+      submit: false
     };
   }
 
   onSubmit = event => {
     event.preventDefault();
 
-    this.setState({ checking: true });
+    this.setState({
+      submit: true,
+      checking: true,
+      validEmail: true,
+      validPassword: true
+    });
+
+    var formData = new FormData(event.target);
+
+    if (!/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/.test(formData.get("email"))) {
+      this.setState({ validEmail: false });
+    }
 
     console.log("Call api to check to get token");
   };
@@ -65,6 +80,13 @@ export default class LoginPage extends Component {
                     />
                   </Col>
                 </Row>
+                {this.state.submit && !this.state.validEmail && (
+                  <Row className="mb-4 text-center">
+                    <Col>
+                      <Alert variant="danger">Invalid email</Alert>
+                    </Col>
+                  </Row>
+                )}
                 {this.state.checking && (
                   <Row className="mb-4 text-center">
                     <Col>
