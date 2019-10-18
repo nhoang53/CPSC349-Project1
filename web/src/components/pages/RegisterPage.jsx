@@ -18,15 +18,15 @@ export default class RegisterPage extends Component {
               </Row>
               <Row className="mb-4">
                 <Col>
-                  <Form.Control type="text" placeholder="Account Type" name="userRole" required />
-                </Col>
-              </Row>
-              <Row className="mb-4">
-                <Col>
                   <Form.Control type="text" placeholder="First Name" name="firstName" required />
                 </Col>
                 <Col>
                   <Form.Control type="text" placeholder="Last Name" name="lastName" required />
+                </Col>
+              </Row>
+              <Row className="mb-4">
+                <Col>
+                  <Form.Control type="text" placeholder="Account Type" name="userRole" required />
                 </Col>
               </Row>
                 <Row className="mb-4">
@@ -55,6 +55,15 @@ export default class RegisterPage extends Component {
                     <Form.Control type="text" placeholder="Link To Share" name="userLink" required />
                   </Col>
                 </Row>
+                <Row className="mb-4">
+                  <Col>
+                    <form action="upload.php" method="post" enctype="multipart/form-data">
+                    Upload your profile picture
+                      <Form.Control type="file" name="photo" id="fileToUpload" />
+                      <Form.Control type="submit" value="Upload Image" name="submit-pic" />
+                    </form>
+                  </Col>
+              </Row>
                 <Row>
                   <Col className="text-center">
                     <Button
