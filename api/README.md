@@ -1,3 +1,0 @@
-# Web Front-end Development (CPSC 349) - Project 1 - API
-
-The following is an implementation of API using slim framework.... more documentation later...
