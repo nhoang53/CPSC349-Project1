@@ -1,16 +1,8 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { withRouter } from "react-router";
 import { Container, Row, Col, Button, Jumbotron } from "react-bootstrap";
 
-class HomePage extends Component {
-  static propTypes = {
-    match: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired
-  };
-
+export default class HomePage extends Component {
   toRegistration = () => {
     this.props.history.push("/register");
   };
@@ -84,5 +76,3 @@ class HomePage extends Component {
     );
   }
 }
-
-export default withRouter(HomePage);

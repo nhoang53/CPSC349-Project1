@@ -1,15 +1,7 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { withRouter } from "react-router";
 import { Container, Row, Col, Nav, Tab, Badge, Button } from "react-bootstrap";
 
-class FeaturesPage extends Component {
-  static propTypes = {
-    match: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired
-  };
-
+export default class FeaturesPage extends Component {
   toPricing = () => {
     this.props.history.push("/pricing");
   };
@@ -175,5 +167,3 @@ class FeaturesPage extends Component {
     );
   }
 }
-
-export default withRouter(FeaturesPage);

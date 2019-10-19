@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { withRouter } from "react-router";
 import {
   Container,
   CardDeck,
@@ -10,13 +8,7 @@ import {
   Accordion
 } from "react-bootstrap";
 
-class PricingPage extends Component {
-  static propTypes = {
-    match: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired
-  };
-
+export default class PricingPage extends Component {
   toRegistration = () => {
     this.props.history.push("/register");
   };
@@ -75,7 +67,7 @@ class PricingPage extends Component {
         </Container>
 
         <Container className="text-center my-5">
-          <h2 class="my-5">Frequently Asked Questions</h2>
+          <h2 className="my-5">Frequently Asked Questions</h2>
           <Accordion>
             <Card>
               <Card.Header className="p-0">
@@ -143,5 +135,3 @@ class PricingPage extends Component {
     );
   }
 }
-
-export default withRouter(PricingPage);
