@@ -7,7 +7,8 @@ import {
   Col,
   Image,
   Button,
-  InputGroup
+  InputGroup,
+  Spinner
 } from "react-bootstrap";
 import bsCustomFileInput from "bs-custom-file-input";
 
@@ -17,6 +18,7 @@ export default class RegisterPage extends Component {
 
     this.state = {
       validated: false,
+      checking: false,
       image: null,
       fullname: "",
       email: "",
@@ -140,12 +142,23 @@ export default class RegisterPage extends Component {
     }
 
     if (this.isValid(form)) {
-      console.log("Call api to check to get token");
+      this.setState({ checking: true });
+
+      console.log("Call api to check to get confirmation of registration");
     }
   };
 
   render() {
-    const { image, fullname, email, password, repassword, link } = this.state;
+    const {
+      validated,
+      checking,
+      image,
+      fullname,
+      email,
+      password,
+      repassword,
+      link
+    } = this.state;
 
     let imageContent = (
       <span className="text-muted">Choose your portfolio image.</span>
@@ -162,11 +175,7 @@ export default class RegisterPage extends Component {
 
           <Card>
             <Card.Body>
-              <Form
-                noValidate
-                validated={this.state.validated}
-                onSubmit={this.onSubmit}
-              >
+              <Form noValidate validated={validated} onSubmit={this.onSubmit}>
                 <Row className="mb-4">
                   <Col>
                     <Form.Control
@@ -279,6 +288,13 @@ export default class RegisterPage extends Component {
                     </Form.Control.Feedback>
                   </Col>
                 </Row>
+                {checking && (
+                  <Row className="mb-4 text-center">
+                    <Col>
+                      <Spinner animation="grow" />
+                    </Col>
+                  </Row>
+                )}
                 <Row>
                   <Col className="text-center">
                     <Button variant="primary" type="submit" block>
