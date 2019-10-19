@@ -7,7 +7,6 @@ import {
   Row,
   Col,
   Button,
-  Alert,
   Spinner
 } from "react-bootstrap";
 
@@ -16,33 +15,77 @@ export default class LoginPage extends Component {
     super(props);
 
     this.state = {
+      validated: false,
       checking: false,
-      validEmail: true,
-      validPassword: true,
-      submit: false
+      email: "",
+      password: ""
     };
+  }
+
+  isValid(form) {
+    const data = new FormData(form);
+    const email = data.get("email");
+    const password = data.get("password");
+
+    let valid = false;
+
+    form[0].setCustomValidity("Invalid");
+
+    if (!email) {
+      this.setState({ email: "Please enter a your email." });
+    } else {
+      if (!/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/.test(email)) {
+        this.setState({ email: "Please enter a valid email." });
+      } else {
+        form[0].setCustomValidity("");
+        valid = true;
+      }
+    }
+
+    form[1].setCustomValidity("Invalid");
+
+    if (!password) {
+      this.setState({ password: "Please enter a password." });
+    } else {
+      if (
+        !/[A-Z]/.test(password) ||
+        !/[a-z]/.test(password) ||
+        !/[0-9]/.test(password) ||
+        !/[^a-zA-Z\d]/.test(password) ||
+        password.length < 8
+      ) {
+        this.setState({
+          password: "Your password must contain at least eight characters."
+        });
+      } else {
+        form[1].setCustomValidity("");
+        valid = true;
+      }
+    }
+
+    this.setState({ validated: true });
+
+    return valid;
   }
 
   onSubmit = event => {
     event.preventDefault();
 
-    this.setState({
-      submit: true,
-      checking: true,
-      validEmail: true,
-      validPassword: true
-    });
+    const form = event.target;
 
-    var formData = new FormData(event.target);
-
-    if (!/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/.test(formData.get("email"))) {
-      this.setState({ validEmail: false });
+    if (form.checkValidity() === false) {
+      event.stopPropagation();
     }
 
-    console.log("Call api to check to get token");
+    if (this.isValid(form)) {
+      this.setState({ checking: true });
+      console.log("Call api to check to get token");
+    }
   };
 
   render() {
+    const { validated, checking, email, password } = this.state;
+
     return (
       <main role="main">
         <Container className="my-5">
@@ -50,7 +93,7 @@ export default class LoginPage extends Component {
 
           <Card>
             <Card.Body>
-              <Form onSubmit={this.onSubmit}>
+              <Form noValidate validated={validated} onSubmit={this.onSubmit}>
                 <Row className="mb-4">
                   <Col>
                     <Form.Control
@@ -59,6 +102,9 @@ export default class LoginPage extends Component {
                       placeholder="Email"
                       required
                     />
+                    <Form.Control.Feedback type="invalid">
+                      {email}
+                    </Form.Control.Feedback>
                   </Col>
                 </Row>
                 <Row className="mb-4">
@@ -69,6 +115,9 @@ export default class LoginPage extends Component {
                       placeholder="Password"
                       required
                     />
+                    <Form.Control.Feedback type="invalid">
+                      {password}
+                    </Form.Control.Feedback>
                   </Col>
                 </Row>
                 <Row className="mb-4">
@@ -80,14 +129,7 @@ export default class LoginPage extends Component {
                     />
                   </Col>
                 </Row>
-                {this.state.submit && !this.state.validEmail && (
-                  <Row className="mb-4 text-center">
-                    <Col>
-                      <Alert variant="danger">Invalid email</Alert>
-                    </Col>
-                  </Row>
-                )}
-                {this.state.checking && (
+                {checking && (
                   <Row className="mb-4 text-center">
                     <Col>
                       <Spinner animation="grow" />
