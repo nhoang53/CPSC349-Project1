@@ -11,11 +11,11 @@ export default class RegisterPage extends Component {
           <Card>
             <Card.Body>
               <Form>
-              <Row className="mb-4">
+              {/*<Row className="mb-4">
                 <Col>
                   <Form.Control type="text" placeholder="Username"  name="username" required />
                 </Col>
-              </Row>
+              </Row> */}
               <Row className="mb-4">
                 <Col>
                   <Form.Control type="text" placeholder="First Name" name="firstName" required />

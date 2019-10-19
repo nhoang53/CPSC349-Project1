@@ -1,0 +1,48 @@
+------ create user -------
+localhost/cpsc349-project1/api/php/create.php
+raw data:
+{
+    "username" : "Amazing",
+    "firstName" : "John",
+    "lastName" : "Bouhon",
+    "premiumUser" : "yes",
+    "email" : "testing@php.com",
+    "password" : "123456",
+    "location" : "Fullerton",
+    "love" : "badminton pool table",
+    "do" : "front end web development",
+    "userLink" : "youtube.com",
+    "photo" : "img/123.jpg"
+}
+
+------ login ------
+localhost/cpsc349-project1/api/php/login.php
+{
+    "email" : "testing@php.com",
+    "password" : "123456",
+}
+
+------- test validate_token jwt -------
+localhost/cpsc349-project1/api/validate_token.php
+raw data:
+{
+	"jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9leGFtcGxlLm9yZyIsImF1ZCI6Imh0dHA6XC9cL2V4YW1wbGUuY29tIiwiaWF0IjoxMzU2OTk5NTI0LCJuYmYiOjEzNTcwMDAwMDAsImRhdGEiOnsiaWQiOiIxNyIsImZpcnN0TmFtZSI6IkpvaG4iLCJsYXN0TmFtZSI6IkJvdWhvbiIsInByZW1pdW1Vc2VyIjoieWVzIiwiZW1haWwiOiJ0ZXN0aW5nNEBwaHAuY29tIiwicGFzc3dvcmQiOiIkMnkkMTAkZkFOb3ZhOHVvQVhDYXFIaUNFM0JZT2NpaE5mdFJ0N1VTdGptQ2RyaDRwWWZVV3dcL3FLamMyIiwibG9jYXRpb24iOiJGdWxsZXJ0b24iLCJsb3ZlIjoiYmFkbWludG9uIHBvb2wgdGFibGUiLCJkbyI6ImZyb250IGVuZCB3ZWIgZGV2ZWxvcG1lbnQiLCJ1c2VyTGluayI6InlvdXR1YmUuY29tIiwicGhvdG8iOiJpbWdcLzEyMy5qcGcifX0.HAO5TL5UuqZAPcTgolQNjbv1GpbYawixqLplMQsPJRo"
+}
+
+------- update user -------
+localhost/cpsc349-project1/api/php/update.php
+raw data:
+
+{
+    "firstName" : "Joseph",
+    "lastName" : "Dalisay",
+    "premiumUser" : "yes",
+    "email" : "joseph@webFrontend.com",
+    "password" : "555",
+    "location" : "Fullerton",
+    "love" : "web front end",
+    "do" : "web design",
+    "userLink" : "youtube.com",
+    "photo" : "igm/123.jpg",
+    "jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9leGFtcGxlLm9yZyIsImF1ZCI6Imh0dHA6XC9cL2V4YW1wbGUuY29tIiwiaWF0IjoxMzU2OTk5NTI0LCJuYmYiOjEzNTcwMDAwMDAsImRhdGEiOnsiaWQiOiIxNyIsImZpcnN0TmFtZSI6IkpvaG4iLCJsYXN0TmFtZSI6IkJvdWhvbiIsInByZW1pdW1Vc2VyIjoieWVzIiwiZW1haWwiOiJ0ZXN0aW5nNEBwaHAuY29tIiwicGFzc3dvcmQiOiIkMnkkMTAkZkFOb3ZhOHVvQVhDYXFIaUNFM0JZT2NpaE5mdFJ0N1VTdGptQ2RyaDRwWWZVV3dcL3FLamMyIiwibG9jYXRpb24iOiJGdWxsZXJ0b24iLCJsb3ZlIjoiYmFkbWludG9uIHBvb2wgdGFibGUiLCJkbyI6ImZyb250IGVuZCB3ZWIgZGV2ZWxvcG1lbnQiLCJ1c2VyTGluayI6InlvdXR1YmUuY29tIiwicGhvdG8iOiJpbWdcLzEyMy5qcGcifX0.HAO5TL5UuqZAPcTgolQNjbv1GpbYawixqLplMQsPJRo"
+}
