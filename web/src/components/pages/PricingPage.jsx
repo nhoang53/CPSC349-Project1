@@ -45,7 +45,9 @@ export default class PricingPage extends Component {
                   <sup>$</sup>10 / year
                 </h2>
                 <ListGroup className="mt-5" variant="flush">
-                  <ListGroup.Item>Show case all your projects.</ListGroup.Item>
+                  <ListGroup.Item>
+                    Show case up to twelve projects.
+                  </ListGroup.Item>
                   <ListGroup.Item>
                     Gives an easy way for others to download your resume.
                   </ListGroup.Item>

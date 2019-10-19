@@ -16,6 +16,8 @@ import ForgotPasswordPage from "./components/pages/ForgotPasswordPage";
 import ResetPasswordPage from "./components/pages/ResetPasswordPage";
 import ContactPage from "./components/pages/ContactPage";
 
+import UserPage from "./components/pages/UserPage";
+
 import Footer from "./components/templates/Footer";
 
 class App extends Component {
@@ -30,7 +32,7 @@ class App extends Component {
     const path_tokens = pathname.split("/");
 
     if (path_tokens.length === 3 && path_tokens[1] === "user") {
-      return <Route path="/user/:user" component={NotFoundPage} />;
+      return <Route path="/user/:user" component={UserPage} />;
     } else {
       return (
         <React.Fragment>
