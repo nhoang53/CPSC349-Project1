@@ -1,3 +1,9 @@
 @import "~bootswatch/dist/lux/variables";
 @import "~bootstrap/scss/bootstrap";
 @import "~bootswatch/dist/lux/bootswatch";
+
+.nav-pills {
+  .active {
+    background-color: $info !important;
+  }
+}

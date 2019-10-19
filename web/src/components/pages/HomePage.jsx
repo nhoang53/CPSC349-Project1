@@ -3,13 +3,6 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 import { Container, Row, Col, Button, Jumbotron } from "react-bootstrap";
-import BackGround from 'components/images/webdevelopment.jpg'
-import Free from 'components/images/free.png'
-import Domain from 'components/images/domain.png'
-import LinkShare from 'components/images/linkshare.png'
-import ProductContent from 'components/images/index.jpg'
-
-
 
 class HomePage extends Component {
   static propTypes = {
@@ -27,13 +20,13 @@ class HomePage extends Component {
       <React.Fragment>
         <header className="bg-dark text-light">
           <Container className="py-5">
-          <img src={BackGround} />
             <Row className="py-5">
-              <Col md="6">
+              <Col md="6" className="mx-auto text-center">
                 <h2 className="text-light">Show the world what you can do.</h2>
-                <div className="mb-4">
-                  Create a page to show off your projects.
-                </div>
+                <p className="mb-4">
+                  Create a page to showcase your projects, show everyone who you
+                  are and let them know what you do.
+                </p>
                 <Button variant="info" block onClick={this.toRegistration}>
                   Create your portfolio
                 </Button>
@@ -46,25 +39,19 @@ class HomePage extends Component {
           <Container>
             <Row className="py-5">
               <Col md="4">
-                <h3 className="text-center">Free To Use</h3>
+                <h3 className="text-center">Simple</h3>
                 <p>
-                  Make it easy for your audience to take action on what is most important to you.
+                  Easy for your audience to learn about you, simple for you to
+                  set up.
                 </p>
-                <img src={Free} />
               </Col>
               <Col md="4">
-                <h3 className="text-center">Professional Domain</h3>
-                <p>
-                  Add a secure, custon domain to your page. Or, map one you already own.
-                </p>
-                  <img src={Domain} />
+                <h3 className="text-center">Professional</h3>
+                <p>Take control and centralize your online presence.</p>
               </Col>
               <Col md="4">
                 <h3 className="text-center">One Link To Share</h3>
-                <p>
-                  Use your link everywhere, online and offline, to promote yourself.
-                </p>
-                <img src={LinkShare} />
+                <p>Use your link everywhere to promote yourself.</p>
               </Col>
             </Row>
             <Row className="mb-5">
@@ -78,9 +65,8 @@ class HomePage extends Component {
             <Container className="py-5">
               <Row>
                 <Col md="6" className="mx-auto">
-                  <img src={ProductContent} />
-                  <h2 className="text-center">
-                    BUILD YOUR OWN ONLINE PORTFOLIO WEBSITE
+                  <h2 className="text-center text-uppercase text-light">
+                    Build your portfolio now
                   </h2>
                   <Button
                     variant="secondary"

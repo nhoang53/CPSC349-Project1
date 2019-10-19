@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { withRouter } from "react-router";
 import {
   Container,
   CardDeck,
@@ -8,7 +10,17 @@ import {
   Accordion
 } from "react-bootstrap";
 
-export default class PricingPage extends Component {
+class PricingPage extends Component {
+  static propTypes = {
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired
+  };
+
+  toRegistration = () => {
+    this.props.history.push("/register");
+  };
+
   render() {
     return (
       <main role="main">
@@ -29,7 +41,9 @@ export default class PricingPage extends Component {
                 </ListGroup>
               </Card.Body>
               <Card.Footer>
-                <Button variant="primary">Get started</Button>
+                <Button variant="primary" onClick={this.toRegistration}>
+                  Get started
+                </Button>
               </Card.Footer>
             </Card>
             <Card>
@@ -41,12 +55,20 @@ export default class PricingPage extends Component {
                 <ListGroup className="mt-5" variant="flush">
                   <ListGroup.Item>Show case all your projects.</ListGroup.Item>
                   <ListGroup.Item>
+                    Gives an easy way for others to download your resume.
+                  </ListGroup.Item>
+                  <ListGroup.Item>
+                    Gives an easy way for others to contact you.
+                  </ListGroup.Item>
+                  <ListGroup.Item>
                     Remove Portfolio Creator branding.
                   </ListGroup.Item>
                 </ListGroup>
               </Card.Body>
               <Card.Footer>
-                <Button variant="primary">Get started</Button>
+                <Button variant="primary" onClick={this.toRegistration}>
+                  Get started
+                </Button>
               </Card.Footer>
             </Card>
           </CardDeck>
@@ -121,3 +143,5 @@ export default class PricingPage extends Component {
     );
   }
 }
+
+export default withRouter(PricingPage);
