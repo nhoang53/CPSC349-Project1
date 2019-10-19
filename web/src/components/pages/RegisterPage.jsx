@@ -16,15 +16,114 @@ export default class RegisterPage extends Component {
     super(props);
 
     this.state = {
-      checking: false,
-      validEmail: true,
-      validPassword: true,
-      submit: false
+      validated: false,
+      image: null,
+      fullname: "",
+      email: "",
+      password: "",
+      repassword: "",
+      link: ""
     };
   }
 
   componentDidMount() {
     bsCustomFileInput.init();
+  }
+
+  isValid(form) {
+    const data = new FormData(form);
+    const fullName = data.get("fullName");
+    const email = data.get("email");
+    const password = data.get("password");
+    const repassword = data.get("reassword");
+    const link = data.get("link");
+
+    let valid = false;
+
+    form[0].setCustomValidity("Invalid");
+
+    if (!fullName) {
+      this.setState({ fullname: "Please enter your full name." });
+    } else {
+      if (!/\S+\x20\S+/.test(fullName)) {
+        this.setState({ fullname: "Please enter your first and last name." });
+      } else {
+        form[0].setCustomValidity("");
+        valid = true;
+      }
+    }
+
+    form[1].setCustomValidity("Invalid");
+
+    if (!email) {
+      this.setState({ email: "Please enter a your email." });
+    } else {
+      if (!/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/.test(email)) {
+        this.setState({ email: "Please enter a valid email." });
+      } else {
+        form[1].setCustomValidity("");
+        valid = true;
+      }
+    }
+
+    form[2].setCustomValidity("Invalid");
+
+    if (!password) {
+      this.setState({ password: "Please enter a password." });
+    } else {
+      if (!/[A-Z]/.test(password)) {
+        this.setState({
+          password: "Your password must contain at least one uppercase letter."
+        });
+      } else if (!/[a-z]/.test(password)) {
+        this.setState({
+          password: "Your password must contain at least one lowercase letter."
+        });
+      } else if (!/[0-9]/.test(password)) {
+        this.setState({
+          password: "Your password must contain at least one number."
+        });
+      } else if (!/[^a-zA-Z\d]/.test(password)) {
+        this.setState({
+          password: "Your password must contain at least one special character."
+        });
+      } else if (password.length < 8) {
+        this.setState({
+          password: "Your password must contain at least eight characters."
+        });
+      } else {
+        form[2].setCustomValidity("");
+        valid = true;
+      }
+    }
+
+    form[3].setCustomValidity("Invalid");
+
+    if (!repassword) {
+      this.setState({ repassword: "Please enter a password." });
+    } else {
+      if (repassword !== password) {
+        this.setState({
+          repassword: "Passwords do not match."
+        });
+      } else {
+        form[3].setCustomValidity("");
+        valid = true;
+      }
+    }
+
+    form[5].setCustomValidity("Invalid");
+
+    if (!link) {
+      this.setState({ link: "Please enter a link." });
+    } else {
+      form[5].setCustomValidity("");
+      valid = true;
+    }
+
+    this.setState({ validated: true });
+
+    return valid;
   }
 
   showImage = event => {
@@ -34,28 +133,26 @@ export default class RegisterPage extends Component {
   onSubmit = event => {
     event.preventDefault();
 
-    this.setState({
-      image: null,
-      submit: true,
-      checking: true,
-      validEmail: true,
-      validPassword: true
-    });
+    const form = event.target;
 
-    var formData = new FormData(event.target);
-
-    if (!/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/.test(formData.get("email"))) {
-      this.setState({ validEmail: false });
+    if (form.checkValidity() === false) {
+      event.stopPropagation();
     }
 
-    console.log("Call api to check to get token");
+    if (this.isValid(form)) {
+      console.log("Call api to check to get token");
+    }
   };
 
   render() {
-    let image = <span className="text-muted">Choose your portfolio image</span>;
+    const { image, fullname, email, password, repassword, link } = this.state;
 
-    if (this.state.image) {
-      image = <Image src={this.state.image} alt="Main image" fluid />;
+    let imageContent = (
+      <span className="text-muted">Choose your portfolio image.</span>
+    );
+
+    if (image) {
+      imageContent = <Image src={image} alt="Main image" fluid />;
     }
 
     return (
@@ -65,24 +162,23 @@ export default class RegisterPage extends Component {
 
           <Card>
             <Card.Body>
-              <Form onSubmit={this.onSubmit}>
+              <Form
+                noValidate
+                validated={this.state.validated}
+                onSubmit={this.onSubmit}
+              >
                 <Row className="mb-4">
                   <Col>
                     <Form.Control
                       type="text"
-                      placeholder="First name"
-                      name="firstName"
+                      placeholder="Full name"
+                      name="fullName"
                       required
                       autoFocus={true}
                     />
-                  </Col>
-                  <Col>
-                    <Form.Control
-                      type="text"
-                      placeholder="Last name"
-                      name="lastName"
-                      required
-                    />
+                    <Form.Control.Feedback type="invalid">
+                      {fullname}
+                    </Form.Control.Feedback>
                   </Col>
                 </Row>
                 <Row className="mb-4">
@@ -93,7 +189,12 @@ export default class RegisterPage extends Component {
                       name="email"
                       required
                     />
+                    <Form.Control.Feedback type="invalid">
+                      {email}
+                    </Form.Control.Feedback>
                   </Col>
+                </Row>
+                <Row className="mb-4">
                   <Col>
                     <Form.Control
                       type="password"
@@ -101,27 +202,46 @@ export default class RegisterPage extends Component {
                       name="password"
                       required
                     />
+                    <Form.Control.Feedback type="invalid">
+                      {password}
+                    </Form.Control.Feedback>
+                  </Col>
+                </Row>
+                <Row className="mb-4">
+                  <Col>
+                    <Form.Control
+                      type="password"
+                      placeholder="Confirm password"
+                      name="repassword"
+                      required
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      {repassword}
+                    </Form.Control.Feedback>
                   </Col>
                 </Row>
                 <Row className="mb-4">
                   <Col md="6" className="mx-auto">
-                    {image}
+                    {imageContent}
                   </Col>
                 </Row>
                 <Row className="mb-4">
                   <Col>
                     <div className="custom-file mb-4">
+                      <Form.Label htmlFor="image" className="custom-file-label">
+                        Choose your portfolio image
+                      </Form.Label>
                       <Form.Control
                         id="image"
                         type="file"
-                        className="custom-file-input"
+                        className="custom-file-input form-control"
                         accept="image/*"
                         onChange={this.showImage}
                         required
                       />
-                      <Form.Label htmlFor="image" className="custom-file-label">
-                        Choose your portfolio image
-                      </Form.Label>
+                      <Form.Control.Feedback type="invalid">
+                        Please choose an image.
+                      </Form.Control.Feedback>
                     </div>
                   </Col>
                 </Row>
@@ -136,9 +256,12 @@ export default class RegisterPage extends Component {
                       <Form.Control
                         type="text"
                         placeholder="Link to share"
-                        name="userLink"
+                        name="link"
                         required
                       />
+                      <Form.Control.Feedback type="invalid">
+                        {link}
+                      </Form.Control.Feedback>
                     </InputGroup>
                   </Col>
                 </Row>
@@ -151,6 +274,9 @@ export default class RegisterPage extends Component {
                       placeholder="Give us a summary about yourself."
                       required
                     />
+                    <Form.Control.Feedback type="invalid">
+                      Please tell us a little bit about who you are.
+                    </Form.Control.Feedback>
                   </Col>
                 </Row>
                 <Row>
