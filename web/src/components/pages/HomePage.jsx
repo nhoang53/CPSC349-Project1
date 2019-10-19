@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 import { Container, Row, Col, Button, Jumbotron } from "react-bootstrap";
-import BackGround from 'components/images/background2.gif'
-import Free from 'components/images/free.jpg'
-import Domain from 'components/images/domain.jpg'
-import LinkShare from 'components/images/linkShare.jpg'
-import ProductContent from 'components/images/productContent5.jpg'
+import BackGround from 'components/images/webdevelopment.jpg'
+import Free from 'components/images/free.png'
+import Domain from 'components/images/domain.png'
+import LinkShare from 'components/images/linkshare.png'
+import ProductContent from 'components/images/index.jpg'
 
 
 
