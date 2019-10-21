@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { getCurrentUser } from "services/auth";
 import { apiUrl } from "config.json";
 import {
   Container,
@@ -27,13 +28,16 @@ export default class RegisterPage extends Component {
       email: "",
       password: "",
       repassword: "",
-      image: null,
       link: ""
     };
   }
 
   componentDidMount() {
     bsCustomFileInput.init();
+
+    if (getCurrentUser()) {
+      this.props.history.push("/account");
+    }
   }
 
   isValid(form) {
@@ -143,8 +147,7 @@ export default class RegisterPage extends Component {
     const image_file = event.target.files[0];
 
     this.setState({
-      img: URL.createObjectURL(image_file),
-      image: image_file
+      img: URL.createObjectURL(image_file)
     });
   };
 
@@ -170,6 +173,8 @@ export default class RegisterPage extends Component {
         });
 
         if (response.status === 201) {
+          this.setState({ checking: false });
+
           this.props.history.push("/login");
         } else {
           this.setState({

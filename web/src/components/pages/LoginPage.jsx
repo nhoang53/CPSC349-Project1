@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { apiUrl, tokenName } from "config.json";
+import { apiUrl } from "config.json";
+import { getCurrentUser, login } from "services/auth";
 import { Link } from "react-router-dom";
 import {
   Container,
@@ -23,6 +24,12 @@ export default class LoginPage extends Component {
       email: "",
       password: ""
     };
+  }
+
+  componentDidMount() {
+    if (getCurrentUser()) {
+      this.props.history.push("/account");
+    }
   }
 
   isValid(form) {
@@ -90,10 +97,10 @@ export default class LoginPage extends Component {
 
         let response = await axios.post(apiUrl + "/user/login.php", data);
 
-        console.log(response.data);
-
         if (response.status === 200) {
-          localStorage.setItem(tokenName, response.data.jwt);
+          this.setState({ checking: false });
+
+          login(response.data.jwt);
 
           this.props.history.push("/account");
         } else {

@@ -8,10 +8,10 @@ export default class FeaturesPage extends Component {
 
   render() {
     return (
-      <main role="main">
+      <main role="main" id="features">
         <Container className="text-center my-5">
           <h1>Features</h1>
-          <Tab.Container id="features" defaultActiveKey="first">
+          <Tab.Container defaultActiveKey="first">
             <Row className="my-5 border border-info">
               <Col sm="4" className="px-0">
                 <Nav variant="pills" className="flex-column">

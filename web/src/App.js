@@ -12,6 +12,7 @@ import FeaturesPage from "./components/pages/FeaturesPage";
 import PricingPage from "./components/pages/PricingPage";
 import RegisterPage from "./components/pages/RegisterPage";
 import LoginPage from "./components/pages/LoginPage";
+import AccountPage from "./components/pages/AccountPage";
 import ForgotPasswordPage from "./components/pages/ForgotPasswordPage";
 import ResetPasswordPage from "./components/pages/ResetPasswordPage";
 import ContactPage from "./components/pages/ContactPage";
@@ -43,6 +44,7 @@ class App extends Component {
             <Route path="/contact" component={ContactPage} />
             <Route path="/reset-password" component={ResetPasswordPage} />
             <Route path="/forgot-password" component={ForgotPasswordPage} />
+            <Route path="/account" component={AccountPage} />
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={RegisterPage} />
             <Route path="/pricing" component={PricingPage} />
