@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import axios from "axios";
+import { apiUrl, tokenName } from "config.json";
 import { Link } from "react-router-dom";
 import {
   Container,
@@ -17,6 +19,7 @@ export default class LoginPage extends Component {
     this.state = {
       validated: false,
       checking: false,
+      error: "",
       email: "",
       password: ""
     };
@@ -27,18 +30,19 @@ export default class LoginPage extends Component {
     const email = data.get("email");
     const password = data.get("password");
 
-    let valid = false;
+    let valid = true;
 
     form[0].setCustomValidity("Invalid");
 
     if (!email) {
       this.setState({ email: "Please enter a your email." });
+      valid = false;
     } else {
-      if (!/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/.test(email)) {
+      if (!/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(email)) {
         this.setState({ email: "Please enter a valid email." });
+        valid = false;
       } else {
         form[0].setCustomValidity("");
-        valid = true;
       }
     }
 
@@ -46,6 +50,7 @@ export default class LoginPage extends Component {
 
     if (!password) {
       this.setState({ password: "Please enter a password." });
+      valid = false;
     } else {
       if (
         !/[A-Z]/.test(password) ||
@@ -57,9 +62,9 @@ export default class LoginPage extends Component {
         this.setState({
           password: "Your password must contain at least eight characters."
         });
+        valid = false;
       } else {
         form[1].setCustomValidity("");
-        valid = true;
       }
     }
 
@@ -68,7 +73,7 @@ export default class LoginPage extends Component {
     return valid;
   }
 
-  onSubmit = event => {
+  onSubmit = async event => {
     event.preventDefault();
 
     const form = event.target;
@@ -79,12 +84,37 @@ export default class LoginPage extends Component {
 
     if (this.isValid(form)) {
       this.setState({ checking: true });
-      console.log("Call api to check to get token");
+
+      try {
+        const data = new FormData(form);
+
+        let response = await axios.post(apiUrl + "/user/login.php", data);
+
+        console.log(response.data);
+
+        if (response.status === 200) {
+          localStorage.setItem(tokenName, response.data.jwt);
+
+          this.props.history.push("/account");
+        } else {
+          this.setState({
+            checking: false,
+            error: response.data.message
+          });
+        }
+      } catch (error) {
+        this.setState({
+          checking: false,
+          error: "An error has occured. Please try again later."
+        });
+      }
+    } else {
+      this.setState({ checking: false, error: "Please check the form." });
     }
   };
 
   render() {
-    const { validated, checking, email, password } = this.state;
+    const { validated, checking, error, email, password } = this.state;
 
     return (
       <main role="main">
@@ -120,15 +150,6 @@ export default class LoginPage extends Component {
                     </Form.Control.Feedback>
                   </Col>
                 </Row>
-                <Row className="mb-4">
-                  <Col>
-                    <Form.Check
-                      type="checkbox"
-                      name="remember"
-                      label="Remember me"
-                    />
-                  </Col>
-                </Row>
                 {checking && (
                   <Row className="mb-4 text-center">
                     <Col>
@@ -136,18 +157,27 @@ export default class LoginPage extends Component {
                     </Col>
                   </Row>
                 )}
-                <Row>
-                  <Col className="text-center">
-                    <Button
-                      className="mb-4"
-                      variant="primary"
-                      type="submit"
-                      block
-                    >
-                      Login
-                    </Button>
-                  </Col>
-                </Row>
+                {error && (
+                  <Row className="mb-4 text-center">
+                    <Col>
+                      <span className="text-danger">{error}</span>
+                    </Col>
+                  </Row>
+                )}
+                {!checking && (
+                  <Row>
+                    <Col className="text-center">
+                      <Button
+                        className="mb-4"
+                        variant="primary"
+                        type="submit"
+                        block
+                      >
+                        Login
+                      </Button>
+                    </Col>
+                  </Row>
+                )}
                 <Row className="text-center">
                   <Col sm="6">
                     <Link to="/register">New user?</Link>

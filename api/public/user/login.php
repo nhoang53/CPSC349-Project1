@@ -4,6 +4,7 @@ include_once "../../tools/postHeaders.php";
 
 include_once "../../config/core.php";
 include_once "../../classes/Database.php";
+include_once "../../classes/User.php";
 
 require "../../vendor/autoload.php";
 use \Firebase\JWT\JWT;
@@ -12,17 +13,13 @@ $database = new Database();
 
 $db = $database->getConnection();
 
-$data = json_decode(file_get_contents("php://input"));
-
-if (!empty($data->fullName) &&
-    !empty($data->email)) {
+if (!empty($_POST["email"]) &&
+    !empty($_POST["password"])) {
 
     $user = new User($db);
 
-    $user->email = $data->email;
-
-    if ($user->exists()) {
-        if (password_verify($data->password, $user->password)) {
+    if ($user->exists("email", $_POST["email"])) {
+        if (password_verify($_POST["password"], $user->password)) {
             $token = array(
                 "iss" => $iss,
                 "aud" => $aud,

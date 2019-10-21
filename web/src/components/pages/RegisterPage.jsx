@@ -21,14 +21,14 @@ export default class RegisterPage extends Component {
     this.state = {
       validated: false,
       checking: false,
+      error: "",
       img: null,
-      fullname: "",
+      fullName: "",
       email: "",
       password: "",
       repassword: "",
       image: null,
-      link: "",
-      error: ""
+      link: ""
     };
   }
 
@@ -49,11 +49,11 @@ export default class RegisterPage extends Component {
     form[0].setCustomValidity("Invalid");
 
     if (!fullName) {
-      this.setState({ fullname: "Please enter your full name." });
+      this.setState({ fullName: "Please enter your full name." });
       valid = false;
     } else {
       if (!/\S+\x20\S+/.test(fullName)) {
-        this.setState({ fullname: "Please enter your first and last name." });
+        this.setState({ fullName: "Please enter your first and last name." });
         form[0].focus();
         valid = false;
       } else {
@@ -170,7 +170,7 @@ export default class RegisterPage extends Component {
         });
 
         if (response.status === 201) {
-          this.props.history.push("/");
+          this.props.history.push("/login");
         } else {
           this.setState({
             checking: false,
@@ -193,13 +193,13 @@ export default class RegisterPage extends Component {
     const {
       validated,
       checking,
+      error,
       img,
-      fullname,
+      fullName,
       email,
       password,
       repassword,
-      link,
-      error
+      link
     } = this.state;
 
     let imageContent = (
@@ -228,7 +228,7 @@ export default class RegisterPage extends Component {
                       autoFocus={true}
                     />
                     <Form.Control.Feedback type="invalid">
-                      {fullname}
+                      {fullName}
                     </Form.Control.Feedback>
                   </Col>
                 </Row>

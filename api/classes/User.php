@@ -171,6 +171,7 @@ class User
 
             $this->fullName = $row["fullName"];
             $this->email = $row["email"];
+            $this->password = $row["password"];
             $this->image = $row["image"];
             $this->link = $row["link"];
             $this->summary = $row["summary"];
