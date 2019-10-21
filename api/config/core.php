@@ -1,13 +1,10 @@
 <?php
-  error_reporting(E_ALL);
-  session_start();
-  date_default_timezone_set('America/Los_Angeles');
-  $home_url="http://localhost/cpsc349-project1/web/src";
 
-  // variables used for jwt
-  $key = "example_key";
-  $iss = "http://example.org";
-  $aud = "http://example.com";
-  $iat = 1356999524;
-  $nbf = 1357000000;
-?>
+//error_reporting(E_ALL);
+date_default_timezone_set('America/Los_Angeles');
+
+$key = "FEWDProjectOne";
+$iss = "Burden_United";
+$aud = "http://protfoliocenter.com";
+$iat = time();
+$nbf = $iat + 10;

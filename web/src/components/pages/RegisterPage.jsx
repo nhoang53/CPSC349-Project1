@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import axios from "axios";
+import { apiUrl } from "config.json";
 import {
   Container,
   Card,
@@ -19,12 +21,14 @@ export default class RegisterPage extends Component {
     this.state = {
       validated: false,
       checking: false,
-      image: null,
+      img: null,
       fullname: "",
       email: "",
       password: "",
       repassword: "",
-      link: ""
+      image: null,
+      link: "",
+      error: ""
     };
   }
 
@@ -37,21 +41,23 @@ export default class RegisterPage extends Component {
     const fullName = data.get("fullName");
     const email = data.get("email");
     const password = data.get("password");
-    const repassword = data.get("reassword");
+    const repassword = data.get("repassword");
     const link = data.get("link");
 
-    let valid = false;
+    let valid = true;
 
     form[0].setCustomValidity("Invalid");
 
     if (!fullName) {
       this.setState({ fullname: "Please enter your full name." });
+      valid = false;
     } else {
       if (!/\S+\x20\S+/.test(fullName)) {
         this.setState({ fullname: "Please enter your first and last name." });
+        form[0].focus();
+        valid = false;
       } else {
         form[0].setCustomValidity("");
-        valid = true;
       }
     }
 
@@ -59,12 +65,13 @@ export default class RegisterPage extends Component {
 
     if (!email) {
       this.setState({ email: "Please enter a your email." });
+      valid = false;
     } else {
-      if (!/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/.test(email)) {
+      if (!/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(email)) {
         this.setState({ email: "Please enter a valid email." });
+        valid = false;
       } else {
         form[1].setCustomValidity("");
-        valid = true;
       }
     }
 
@@ -72,7 +79,10 @@ export default class RegisterPage extends Component {
 
     if (!password) {
       this.setState({ password: "Please enter a password." });
+      valid = false;
     } else {
+      valid = false;
+
       if (!/[A-Z]/.test(password)) {
         this.setState({
           password: "Your password must contain at least one uppercase letter."
@@ -103,14 +113,15 @@ export default class RegisterPage extends Component {
 
     if (!repassword) {
       this.setState({ repassword: "Please enter a password." });
+      valid = false;
     } else {
       if (repassword !== password) {
         this.setState({
           repassword: "Passwords do not match."
         });
+        valid = false;
       } else {
         form[3].setCustomValidity("");
-        valid = true;
       }
     }
 
@@ -118,9 +129,9 @@ export default class RegisterPage extends Component {
 
     if (!link) {
       this.setState({ link: "Please enter a link." });
+      valid = false;
     } else {
       form[5].setCustomValidity("");
-      valid = true;
     }
 
     this.setState({ validated: true });
@@ -129,10 +140,15 @@ export default class RegisterPage extends Component {
   }
 
   showImage = event => {
-    this.setState({ image: URL.createObjectURL(event.target.files[0]) });
+    const image_file = event.target.files[0];
+
+    this.setState({
+      img: URL.createObjectURL(image_file),
+      image: image_file
+    });
   };
 
-  onSubmit = event => {
+  onSubmit = async event => {
     event.preventDefault();
 
     const form = event.target;
@@ -144,7 +160,32 @@ export default class RegisterPage extends Component {
     if (this.isValid(form)) {
       this.setState({ checking: true });
 
-      console.log("Call api to check to get confirmation of registration");
+      try {
+        const data = new FormData(form);
+
+        let response = await axios.post(apiUrl + "/user/register.php", data, {
+          headers: {
+            "content-type": "multipart/form-data"
+          }
+        });
+
+        if (response.status === 201) {
+          this.props.history.push("/");
+        } else {
+          this.setState({
+            checking: false,
+            error: response.data.message
+          });
+        }
+      } catch (error) {
+        console.log(error.response);
+        this.setState({
+          checking: false,
+          error: "An error has occured. Please try again later."
+        });
+      }
+    } else {
+      this.setState({ checking: false, error: "Please check the form." });
     }
   };
 
@@ -152,20 +193,21 @@ export default class RegisterPage extends Component {
     const {
       validated,
       checking,
-      image,
+      img,
       fullname,
       email,
       password,
       repassword,
-      link
+      link,
+      error
     } = this.state;
 
     let imageContent = (
       <span className="text-muted">Choose your portfolio image.</span>
     );
 
-    if (image) {
-      imageContent = <Image src={image} alt="Main image" fluid />;
+    if (img) {
+      imageContent = <Image src={img} alt="Main image" fluid />;
     }
 
     return (
@@ -236,13 +278,14 @@ export default class RegisterPage extends Component {
                 </Row>
                 <Row className="mb-4">
                   <Col>
-                    <div className="custom-file mb-4">
+                    <div className="custom-file">
                       <Form.Label htmlFor="image" className="custom-file-label">
                         Choose your portfolio image
                       </Form.Label>
                       <Form.Control
                         id="image"
                         type="file"
+                        name="image"
                         className="custom-file-input form-control"
                         accept="image/*"
                         onChange={this.showImage}
@@ -275,6 +318,22 @@ export default class RegisterPage extends Component {
                   </Col>
                 </Row>
                 <Row className="mb-4">
+                  <Col md="6" className="mb-4 mb-md-0">
+                    <Form.Control
+                      type="text"
+                      placeholder="Location"
+                      name="location"
+                    />
+                  </Col>
+                  <Col md="6">
+                    <Form.Control
+                      type="text"
+                      placeholder="Ocupation"
+                      name="ocupation"
+                    />
+                  </Col>
+                </Row>
+                <Row className="mb-4">
                   <Col>
                     <Form.Control
                       as="textarea"
@@ -295,13 +354,22 @@ export default class RegisterPage extends Component {
                     </Col>
                   </Row>
                 )}
-                <Row>
-                  <Col className="text-center">
-                    <Button variant="primary" type="submit" block>
-                      Sign Up
-                    </Button>
-                  </Col>
-                </Row>
+                {error && (
+                  <Row className="mb-4 text-center">
+                    <Col>
+                      <span className="text-danger">{error}</span>
+                    </Col>
+                  </Row>
+                )}
+                {!checking && (
+                  <Row>
+                    <Col className="text-center">
+                      <Button variant="primary" type="submit" block>
+                        Sign Up
+                      </Button>
+                    </Col>
+                  </Row>
+                )}
               </Form>
             </Card.Body>
           </Card>
