@@ -2,7 +2,7 @@
 
 include_once "../../tools/postHeaders.php";
 
-include_once "../../classes/database.php";
+include_once "../../classes/Database.php";
 include_once "../../classes/User.php";
 
 $database = new Database();

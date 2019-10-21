@@ -2,6 +2,11 @@
 
 This is the API part of the project, the back-end.
 
+## Development
+
+To see your changes use: `composer start`.
+Please check `classes/database.php` for database configuration.
+
 ## Available API
 
 ### User
@@ -50,7 +55,3 @@ Unsuccessful response:
 ```
 
 **Note: `message` will differ depending on the error.**
-
-## Development
-
-To see your changes use: `composer start`.

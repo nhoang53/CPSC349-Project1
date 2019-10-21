@@ -3,7 +3,7 @@
 include_once "../../tools/postHeaders.php";
 
 include_once "../../config/core.php";
-include_once "../../classes/database.php";
+include_once "../../classes/Database.php";
 
 require "../../vendor/autoload.php";
 use \Firebase\JWT\JWT;
