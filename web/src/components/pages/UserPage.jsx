@@ -57,7 +57,7 @@ export default class UserPage extends Component {
     if (status === "found") {
       return (
         <React.Fragment>
-          <Container fluid className="bg-info text-light p-0 m-0 min-vh-100">
+          <Container fluid className="p-0 m-0 min-vh-100">
             <Row className="p-0 m-0">
               <Col md="8" className="p-0 m-0">
                 <Image
@@ -68,22 +68,15 @@ export default class UserPage extends Component {
               <Col className="py-4">
                 <Row>
                   <Col>
-                    <h1 className="text-center text-light">{user.fullName}</h1>
+                    <h1 className="text-center">{user.fullName}</h1>
                   </Col>
                 </Row>
                 <Row className="mb-2">
-                  <Col xs="3">
-                    <Image src="https://via.placeholder.com/150" fluid />
-                  </Col>
-                  <Col xs="3">
-                    <Image src="https://via.placeholder.com/150" fluid />
-                  </Col>
-                  <Col xs="3">
-                    <Image src="https://via.placeholder.com/150" fluid />
-                  </Col>
-                  <Col xs="3">
-                    <Image src="https://via.placeholder.com/150" fluid />
-                  </Col>
+                  {user.projects.map(project => (
+                    <Col key={project.id} xs="3">
+                      <Image src={`${apiUrl}${project.image}`} fluid />
+                    </Col>
+                  ))}
                 </Row>
                 <Row>
                   <Col>{content}</Col>
