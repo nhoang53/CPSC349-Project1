@@ -1,17 +1,10 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { getCurrentUser, logout } from "services/auth";
 import { withRouter } from "react-router";
 import { LinkContainer } from "react-router-bootstrap";
 import { Navbar, Nav, Button } from "react-bootstrap";
 
 class NavBar extends Component {
-  static propTypes = {
-    match: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired
-  };
-
   constructor(props) {
     super(props);
 
@@ -30,6 +23,10 @@ class NavBar extends Component {
     logout();
 
     this.setState({ isloggedIn: false, link: "" });
+  };
+
+  toPortfolio = () => {
+    this.props.history.push(`/user/${this.state.link}`);
   };
 
   render() {
@@ -51,19 +48,17 @@ class NavBar extends Component {
             </LinkContainer>
             {this.state.isloggedIn && (
               <React.Fragment>
-                <LinkContainer to={`/user/${this.state.link}`}>
-                  <Nav.Link>Portfolio</Nav.Link>
-                </LinkContainer>
                 <LinkContainer to="/account">
                   <Nav.Link>Account Settings</Nav.Link>
                 </LinkContainer>
+                <Nav.Link onClick={this.logout}>Logout</Nav.Link>
                 <Button
                   variant="info"
                   size="sm"
                   className="ml-md-4"
-                  onClick={this.logout}
+                  onClick={this.toPortfolio}
                 >
-                  Create your portfolio
+                  Logout
                 </Button>
               </React.Fragment>
             )}
