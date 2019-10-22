@@ -144,14 +144,12 @@ export default class RegisterPage extends Component {
   }
 
   showImage = event => {
-    const image_file = event.target.files[0];
-
     this.setState({
-      img: URL.createObjectURL(image_file)
+      img: URL.createObjectURL(event.target.files[0])
     });
   };
 
-  onSubmit = async event => {
+  handleSubmit = async event => {
     event.preventDefault();
 
     const form = event.target;
@@ -212,7 +210,7 @@ export default class RegisterPage extends Component {
     );
 
     if (img) {
-      imageContent = <Image src={img} alt="Main image" fluid />;
+      imageContent = <Image src={img} alt="Main" fluid />;
     }
 
     return (
@@ -222,7 +220,11 @@ export default class RegisterPage extends Component {
 
           <Card>
             <Card.Body>
-              <Form noValidate validated={validated} onSubmit={this.onSubmit}>
+              <Form
+                noValidate
+                validated={validated}
+                onSubmit={this.handleSubmit}
+              >
                 <Row className="mb-4">
                   <Col>
                     <Form.Control

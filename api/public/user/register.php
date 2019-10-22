@@ -18,21 +18,21 @@ if (!empty($_POST["fullName"]) &&
     !empty($link) &&
     !empty($_POST["summary"])) {
     if ($_FILES["image"]["error"] === UPLOAD_ERR_OK) {
-        $image_name = preg_replace('/\s+/', '-', $_FILES["image"]["name"]);
-        $image_tmp_name = $_FILES["image"]["tmp_name"];
-        $upload_url = "/images/" . uniqid() . "-" . $image_name;
-        $upload_name = ".." . $upload_url;
+        $imageName = preg_replace('/\s+/', '-', $_FILES["image"]["name"]);
+        $imageTmpName = $_FILES["image"]["tmp_name"];
+        $uploadUrl = "/images/" . uniqid() . "-" . $imageName;
+        $uploadName = ".." . $uploadUrl;
 
         $user = new User($db);
 
         if (!$user->exists("email", $_POST["email"])) {
             if (!$user->exists("link", $_POST["link"])) {
-                if (move_uploaded_file($image_tmp_name, $upload_name)) {
+                if (move_uploaded_file($imageTmpName, $uploadName)) {
 
                     $user->fullName = $_POST["fullName"];
                     $user->email = $_POST["email"];
                     $user->password = $_POST["password"];
-                    $user->image = $upload_url;
+                    $user->image = $uploadUrl;
                     $user->link = $link;
                     $user->location = $_POST["location"];
                     $user->ocupation = $_POST["ocupation"];

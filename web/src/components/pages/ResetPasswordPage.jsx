@@ -94,7 +94,7 @@ export default class ResetPasswordPage extends Component {
     return valid;
   }
 
-  onSubmit = event => {
+  handleSubmit = event => {
     event.preventDefault();
 
     const form = event.target;
@@ -120,7 +120,11 @@ export default class ResetPasswordPage extends Component {
 
           <Card>
             <Card.Body>
-              <Form noValidate validated={validated} onSubmit={this.onSubmit}>
+              <Form
+                noValidate
+                validated={validated}
+                onSubmit={this.handleSubmit}
+              >
                 <Row className="mb-4">
                   <Col>
                     <Form.Control

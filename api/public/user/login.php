@@ -40,6 +40,7 @@ if (!empty($_POST["email"]) &&
                     "twitter" => $user->twitter,
                     "instagram" => $user->instagram,
                     "youtube" => $user->youtube,
+                    "projects" => $user->projects,
                 ),
             );
 
@@ -50,6 +51,7 @@ if (!empty($_POST["email"]) &&
                 array(
                     "message" => "Success.",
                     "jwt" => $jwt,
+                    "projects" => $user->projects,
                 )
             );
         } else {

@@ -2,6 +2,8 @@
 
 include_once "../tools/postHeaders.php";
 
+$data = json_decode(file_get_contents("php://input"));
+
 if (!empty($_POST["fullName"]) &&
     !empty($_POST["email"]) &&
     !empty($_POST["subject"]) &&

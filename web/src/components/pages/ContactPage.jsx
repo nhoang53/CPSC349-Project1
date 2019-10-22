@@ -77,7 +77,7 @@ export default class ContactPage extends Component {
     this.props.history.push("/");
   };
 
-  onSubmit = async event => {
+  handleSubmit = async event => {
     event.preventDefault();
 
     const form = event.target;
@@ -93,8 +93,6 @@ export default class ContactPage extends Component {
         const data = new FormData(form);
 
         let response = await axios.post(apiUrl + "/contact.php", data);
-
-        console.log(response.data);
 
         if (response.status === 201) {
           this.setState({
@@ -128,7 +126,11 @@ export default class ContactPage extends Component {
 
           <Card>
             <Card.Body>
-              <Form noValidate validated={validated} onSubmit={this.onSubmit}>
+              <Form
+                noValidate
+                validated={validated}
+                onSubmit={this.handleSubmit}
+              >
                 <Row className="mb-4">
                   <Col>
                     <Form.Control

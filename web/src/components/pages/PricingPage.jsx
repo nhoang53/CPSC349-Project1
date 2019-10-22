@@ -46,7 +46,7 @@ export default class PricingPage extends Component {
                 </h2>
                 <ListGroup className="mt-5" variant="flush">
                   <ListGroup.Item>
-                    Show case up to twelve projects.
+                    Show case up to eight projects.
                   </ListGroup.Item>
                   <ListGroup.Item>
                     Gives an easy way for others to download your resume.

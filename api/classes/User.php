@@ -3,7 +3,8 @@
 class User
 {
     private $db;
-    private $table_name = "users";
+    private $mainTable = "users";
+    private $projectsTable = "projects";
 
     public $id;
     public $fullName;
@@ -21,6 +22,7 @@ class User
     public $twitter;
     public $instagram;
     public $youtube;
+    public $projects;
 
     public function __construct($db)
     {
@@ -29,7 +31,7 @@ class User
 
     public function create()
     {
-        $query = "INSERT INTO " . $this->table_name . "
+        $query = "INSERT INTO " . $this->mainTable . "
               SET fullName = :fullName,
                   email = :email,
                   password = :password,
@@ -50,11 +52,11 @@ class User
         $this->location = htmlspecialchars(strip_tags($this->location));
         $this->ocupation = htmlspecialchars(strip_tags($this->ocupation));
 
-        $password_hash = password_hash($this->password, PASSWORD_BCRYPT);
+        $passwordHash = password_hash($this->password, PASSWORD_BCRYPT);
 
         $stmt->bindParam(":fullName", $this->fullName);
         $stmt->bindParam(":email", $this->email);
-        $stmt->bindParam(':password', $password_hash);
+        $stmt->bindParam(':password', $passwordHash);
         $stmt->bindParam(":image", $this->image);
         $stmt->bindParam(":link", $this->link);
         $stmt->bindParam(":summary", $this->summary);
@@ -70,12 +72,12 @@ class User
 
     public function update()
     {
-        $password_set = !empty($this->password) ? "password = :password" : "";
+        $passwordSet = !empty($this->password) ? "password = :password" : "";
 
-        $query = "UPDATE " . $this->table_name . "
+        $query = "UPDATE " . $this->mainTable . "
                   SET fullName=:fullName
                       email=:email,
-                      {$password_set},
+                      {$passwordSet},
                       image=:image,
                       link=:link,
                       summary=:summary,
@@ -125,9 +127,9 @@ class User
         if (!empty($this->password)) {
             $this->password = htmlspecialchars(strip_tags($this->password));
 
-            $password_hash = password_hash($this->password, PASSWORD_BCRYPT);
+            $passwordHash = password_hash($this->password, PASSWORD_BCRYPT);
 
-            $stmt->bindParam(":password", $password_hash);
+            $stmt->bindParam(":password", $passwordHash);
         }
         if ($stmt->execute()) {
             return true;
@@ -137,7 +139,7 @@ class User
 
     public function delete()
     {
-        $query = "DELETE FROM " . $this->table_name . " WHERE id = ?";
+        $query = "DELETE FROM " . $this->mainTable . " WHERE id = ?";
         $stmt = $this->db->prepare($query);
 
         $this->id = htmlspecialchars(strip_tags($this->id));
@@ -153,7 +155,7 @@ class User
     public function exists($field, $value)
     {
         $query = "SELECT *
-                FROM " . $this->table_name . "
+                FROM " . $this->mainTable . "
                 WHERE {$field} = ?
                 LIMIT 1";
 
@@ -164,11 +166,11 @@ class User
         $stmt->bindParam(1, $value);
         $stmt->execute();
 
-        $num = $stmt->rowCount();
+        if ($stmt->rowCount() > 0) {
 
-        if ($num > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
+            $this->id = $row["id"];
             $this->fullName = $row["fullName"];
             $this->email = $row["email"];
             $this->password = $row["password"];
@@ -184,6 +186,44 @@ class User
             $this->twitter = $row["twitter"];
             $this->instagram = $row["instagram"];
             $this->youtube = $row["youtube"];
+            $this->projects = array();
+
+            $query = "SELECT *
+                FROM " . $this->mainTable . "
+                WHERE user_id = ?
+                LIMIT 1";
+
+            $stmt = $this->db->prepare($query);
+
+            $stmt->bindParam(1, $this->id);
+            $stmt->execute();
+
+            $projects = 4;
+
+            if ($this->pro) {
+                $projects = 8;
+            }
+
+            if ($stmt->rowCount() > 0) {
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $project = array(
+                        "id" => $row["id"],
+                        "title" => $row["title"],
+                        "image" => $row["image"],
+                        "summary" => $row["summary"],
+                        "demo" => $row["demo"],
+                        "code" => $row["code"],
+                    );
+
+                    array_push($this->projects, $project);
+                }
+            }
+
+            if (count($this->projects) > $projects) {
+                for ($i = $projects; $i < $project; $i++) {
+                    unset($this->projects[$i]);
+                }
+            }
 
             return true;
         }

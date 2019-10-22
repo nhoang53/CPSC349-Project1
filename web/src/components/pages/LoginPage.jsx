@@ -80,7 +80,7 @@ export default class LoginPage extends Component {
     return valid;
   }
 
-  onSubmit = async event => {
+  handleSubmit = async event => {
     event.preventDefault();
 
     const form = event.target;
@@ -130,7 +130,11 @@ export default class LoginPage extends Component {
 
           <Card>
             <Card.Body>
-              <Form noValidate validated={validated} onSubmit={this.onSubmit}>
+              <Form
+                noValidate
+                validated={validated}
+                onSubmit={this.handleSubmit}
+              >
                 <Row className="mb-4">
                   <Col>
                     <Form.Control

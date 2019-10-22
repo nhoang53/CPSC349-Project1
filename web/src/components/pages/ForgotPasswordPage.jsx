@@ -44,7 +44,7 @@ export default class ForgotPasswordPage extends Component {
     return valid;
   }
 
-  onSubmit = event => {
+  handleSubmit = event => {
     event.preventDefault();
 
     const form = event.target;
@@ -73,7 +73,11 @@ export default class ForgotPasswordPage extends Component {
                 If you forgot your password, enter your email and we will send
                 you instruction on how to reset your password.
               </p>
-              <Form noValidate validated={validated} onSubmit={this.onSubmit}>
+              <Form
+                noValidate
+                validated={validated}
+                onSubmit={this.handleSubmit}
+              >
                 <Row className="mb-4">
                   <Col>
                     <Form.Control
