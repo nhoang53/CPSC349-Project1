@@ -3,10 +3,10 @@
 This is a project for Web Front-end Development (CPSC 349). The project is based on [about.me](https://about.me/). A user is able to create a landing page promoting who they are and what they are.
 
 ## Dependencies
-- Install [XAMPP Control Panel] (https://www.apachefriends.org/download.html)
-- Install [Node.js] (https://nodejs.org/en/)
-- Install [composer] (https://getcomposer.org/download/)
-- Install [Git] (https://git-scm.com)
+- Install [XAMPP Control Panel](https://www.apachefriends.org/download.html)
+- Install [Node.js](https://nodejs.org/en/)
+- Install [composer](https://getcomposer.org/download/)
+- Install [Git](https://git-scm.com)
 
 ## Development
 
