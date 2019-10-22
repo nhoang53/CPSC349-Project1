@@ -12,7 +12,7 @@ This is a project for Web Front-end Development (CPSC 349). The project is based
 
 1. `cd` into your projects folder, should be C:\xampp\htdocs\
 2. Clone repository: `git clone https://github.com/nhoang53/CPSC349-Project1.git`
-3. Go to CPSC349-Project1: `cd CPSC349-Project1/web`
+3. Go to CPSC349-Project1: `cd CPSC349-Project1/`
 4. Add your contributions
 
 _To run project_
