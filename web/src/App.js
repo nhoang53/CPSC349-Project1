@@ -36,9 +36,11 @@ class App extends Component {
 
   handleLogin = () => {
     this.setState({ refresh: true });
+    window.location.reload();
   };
 
   render() {
+    const { refresh } = this.state;
     const { pathname } = this.props.location;
     const path_tokens = pathname.split("/");
 

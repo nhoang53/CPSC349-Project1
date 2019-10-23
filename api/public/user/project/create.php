@@ -1,16 +1,14 @@
 <?php
 
-include_once "../../tools/postHeaders.php";
+include_once "../../../tools/postHeaders.php";
 
-include_once "../../config/core.php";
-include_once "../../classes/Database.php";
-include_once "../../classes/User.php";
+include_once "../../../config/core.php";
+include_once "../../../classes/Database.php";
+include_once "../../../classes/User.php";
 
 $database = new Database();
 
 $db = $database->getConnection();
-
-$link = $_POST["link"];
 
 if (!empty($_POST["title"]) &&
     !empty($_POST["summary"]) &&
@@ -21,7 +19,7 @@ if (!empty($_POST["title"]) &&
         $imageName = preg_replace('/\s+/', '-', $_FILES["image"]["name"]);
         $imageTmpName = $_FILES["image"]["tmp_name"];
         $uploadUrl = "/images/" . uniqid() . "-" . $imageName;
-        $uploadName = ".." . $uploadUrl;
+        $uploadName = "../.." . $uploadUrl;
 
         $user = new User($db);
 

@@ -135,7 +135,7 @@ export default class ProjectSettings extends Component {
                 <Form.Control
                   id={`project${number}Image`}
                   type="file"
-                  name="projectImage"
+                  name="image"
                   className="custom-file-input form-control"
                   accept="image/*"
                   onChange={this.showImage}
