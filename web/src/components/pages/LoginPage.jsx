@@ -102,6 +102,8 @@ export default class LoginPage extends Component {
 
           login(response.data.jwt);
 
+          this.props.onLogin();
+
           this.props.history.push("/account");
         } else {
           this.setState({

@@ -23,6 +23,8 @@ class NavBar extends Component {
     logout();
 
     this.setState({ isloggedIn: false, link: "" });
+
+    this.props.history.push("/");
   };
 
   toPortfolio = () => {
@@ -58,7 +60,7 @@ class NavBar extends Component {
                   className="ml-md-4"
                   onClick={this.toPortfolio}
                 >
-                  Logout
+                  Portfolio
                 </Button>
               </React.Fragment>
             )}

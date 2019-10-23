@@ -28,6 +28,16 @@ class App extends Component {
     history: PropTypes.object.isRequired
   };
 
+  constructor(props) {
+    super(props);
+
+    this.state = { refresh: false };
+  }
+
+  handleLogin = () => {
+    this.setState({ refresh: true });
+  };
+
   render() {
     const { pathname } = this.props.location;
     const path_tokens = pathname.split("/");
@@ -45,7 +55,12 @@ class App extends Component {
             <Route path="/reset-password" component={ResetPasswordPage} />
             <Route path="/forgot-password" component={ForgotPasswordPage} />
             <Route path="/account" component={AccountPage} />
-            <Route path="/login" component={LoginPage} />
+            <Route
+              path="/login"
+              component={() => (
+                <LoginPage onLogin={this.handleLogin} {...this.props} />
+              )}
+            />
             <Route path="/register" component={RegisterPage} />
             <Route path="/pricing" component={PricingPage} />
             <Route path="/features" component={FeaturesPage} />
