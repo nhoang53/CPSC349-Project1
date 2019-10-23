@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Container, Row, Col, Button, Jumbotron } from "react-bootstrap";
+import { Container, Row, Col, Button, Jumbotron, Image } from "react-bootstrap";
+import domain from "images/domain.png";
+import free from "images/free.png";
+import linkshare from "images/linkshare.png";
 
 export default class HomePage extends Component {
   toRegistration = () => {
@@ -36,20 +39,25 @@ export default class HomePage extends Component {
                   Easy for your audience to learn about you, simple for you to
                   set up.
                 </p>
+                <Image src={free} alt="free" fluid/>
               </Col>
               <Col md="4">
                 <h3 className="text-center">Professional</h3>
                 <p>Take control and centralize your online presence.</p>
+                <Image src={domain} alt="domain" fluid/>
               </Col>
               <Col md="4">
                 <h3 className="text-center">One Link To Share</h3>
                 <p>Use your link everywhere to promote yourself.</p>
+                <Image src={linkshare} alt="linkshare" fluid/>
               </Col>
             </Row>
             <Row className="mb-5">
               <Col className="text-center">
                 <Link to="/features">See all features &rarr;</Link>
+
               </Col>
+
             </Row>
           </Container>
 

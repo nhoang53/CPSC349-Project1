@@ -18,7 +18,8 @@ This is a project for Web Front-end Development (CPSC 349). The project is based
 _To run project_
 
 1. Open XAMPP Control Panel, start service Apache and MySQL.
-2. Go to http://localhost/phpmyadmin/ in browser, create database name: fewdprojecttone. Then import sql file name fewdprojectone.sql in project folder/api/db
+2. Go to http://localhost/phpmyadmin/ in browser, create database name: fewdprojecttone.
+    Then import sql file name fewdprojectone.sql in project folder/api/db
 3. Open command line in directory `api`, then run: `composer install`
 4. Go to directory `web` install dependencies: `npm install`
 5. To run the project on browser, open shell in web folder: `npm run start`
