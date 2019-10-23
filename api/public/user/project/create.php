@@ -2,6 +2,7 @@
 
 include_once "../../tools/postHeaders.php";
 
+include_once "../../config/core.php";
 include_once "../../classes/Database.php";
 include_once "../../classes/User.php";
 
@@ -12,11 +13,10 @@ $db = $database->getConnection();
 $link = $_POST["link"];
 
 if (!empty($_POST["title"]) &&
-    !empty($_POST["image"]) &&
     !empty($_POST["summary"]) &&
-    $_FILES["demo"] &&
-    !empty($link) &&
-    !empty($_POST["code"])) {
+    $_FILES["image"] &&
+    !empty($_POST["code"]) &&
+    !empty($_POST["demo"])) {
     if ($_FILES["image"]["error"] === UPLOAD_ERR_OK) {
         $imageName = preg_replace('/\s+/', '-', $_FILES["image"]["name"]);
         $imageTmpName = $_FILES["image"]["tmp_name"];
@@ -29,33 +29,24 @@ if (!empty($_POST["title"]) &&
             if (!$user->exists("link", $_POST["link"])) {
                 if (move_uploaded_file($imageTmpName, $uploadName)) {
 
-                    $user->fullName = $_POST["fullName"];
-                    $user->email = $_POST["email"];
-                    $user->password = $_POST["password"];
-                    $user->image = $uploadUrl;
-                    $user->link = $link;
-                    $user->location = $_POST["location"];
-                    $user->ocupation = $_POST["ocupation"];
-                    $user->summary = $_POST["summary"];
+                    $user->proTitle = $_POST["title"];
+                    $user->proImage = $uploadUrl;
+                    $user->proDemo = $_POST["demo"];
+                    $user->proCode = $_POST["code"];
+                    $user->proSummary = $_POST["summary"];
 
                     if ($user->create()) {
                         http_response_code(201);
                         echo json_encode(array("message" => "Success."));
                     } else {
                         http_response_code(202);
-                        echo json_encode(array("message" => "Unable to create user."));
+                        echo json_encode(array("message" => "Unable to create project."));
                     }
                 } else {
                     http_response_code(500);
                     echo json_encode(array("message" => "Unable to upload image."));
                 }
-            } else {
-                http_response_code(202);
-                echo json_encode(array("message" => "Link already in use, please choose another one."));
             }
-        } else {
-            http_response_code(202);
-            echo json_encode(array("message" => "Email already in use, please choose another one."));
         }
     } else {
         http_response_code(500);
