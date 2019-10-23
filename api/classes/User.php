@@ -118,6 +118,7 @@ class User
         $this->instagram = htmlspecialchars(strip_tags($this->instagram));
         $this->youtube = htmlspecialchars(strip_tags($this->youtube));
 
+        $stmt->bindParam(":id", $this->id);
         $stmt->bindParam(":fullName", $this->fullName);
         $stmt->bindParam(":email", $this->email);
         $stmt->bindParam(":image", $this->image);

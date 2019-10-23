@@ -78,9 +78,9 @@ export default class ProjectSettings extends Component {
       const { project, exists } = this.props;
       const data = new FormData(form);
 
-      data.append("id", project.id);
-
+      data.append("user", this.props.user);
       if (exists) {
+        data.append("id", project.id);
         this.sendData(apiUrl + "/user/project/update.php", data);
       } else {
         this.sendData(apiUrl + "/user/project/create.php", data);

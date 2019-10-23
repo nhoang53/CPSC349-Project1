@@ -23,8 +23,7 @@ if (!empty($_POST["title"]) &&
 
         $user = new User($db);
 
-        if (!$user->exists("email", $_POST["email"])) {
-            if (!$user->exists("link", $_POST["link"])) {
+        if (!$user->exists("id", $_POST["user"])) {
                 if (move_uploaded_file($imageTmpName, $uploadName)) {
 
                     $user->proTitle = $_POST["title"];
@@ -45,7 +44,6 @@ if (!empty($_POST["title"]) &&
                     echo json_encode(array("message" => "Unable to upload image."));
                 }
             }
-        }
     } else {
         http_response_code(500);
         echo json_encode(array("message" => "Unable to upload image."));

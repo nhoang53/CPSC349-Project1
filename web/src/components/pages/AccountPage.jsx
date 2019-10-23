@@ -10,6 +10,7 @@ export default class AccountPage extends Component {
 
     this.state = {
       link: "",
+      id: "",
       pro: false,
       projects: []
     };
@@ -22,12 +23,17 @@ export default class AccountPage extends Component {
       this.props.history.push("/account");
     } else {
       const userPro = user.pro === "0" ? false : true;
-      this.setState({ link: user.link, pro: userPro, projects: user.projects });
+      this.setState({
+        id: user.id,
+        link: user.link,
+        pro: userPro,
+        projects: user.projects
+      });
     }
   }
 
   render() {
-    const { link, pro, projects } = this.state;
+    const { id, link, pro, projects } = this.state;
     const numberOfProjects = pro ? 8 : 4;
 
     let projectsTabPanes;
@@ -69,6 +75,7 @@ export default class AccountPage extends Component {
                 number={index + 1}
                 exists={false}
                 link={link}
+                user={id}
                 {...this.props}
               />
             </Tab.Pane>
