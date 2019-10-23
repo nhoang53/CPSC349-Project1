@@ -4,17 +4,20 @@ import { Container, Row, Col, Button, Jumbotron, Image } from "react-bootstrap";
 import domain from "images/domain.png";
 import free from "images/free.png";
 import linkshare from "images/linkshare.png";
+import background from "images/background.jpg";
 
 export default class HomePage extends Component {
   toRegistration = () => {
     this.props.history.push("/register");
   };
 
+
+
   render() {
     return (
       <React.Fragment>
         <header className="bg-dark text-light">
-          <Container className="py-5">
+          <Container className="py-5" className="bg">
             <Row className="py-5">
               <Col md="6" className="mx-auto text-center">
                 <h2 className="text-light">Show the world what you can do.</h2>

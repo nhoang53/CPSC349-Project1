@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Nav, Tab, Badge, Button } from "react-bootstrap";
+import { Container, Row, Col, Nav, Tab, Badge, Button, Image } from "react-bootstrap";
+import domain from "images/domain.png";
+import free from "images/free.png";
+import linkshare from "images/linkshare.png";
+import background from "images/background.jpg";
+import resume from "images/resume.png";
+import contacts from "images/contacts.png";
 
 export default class FeaturesPage extends Component {
   toPricing = () => {
@@ -68,87 +74,37 @@ export default class FeaturesPage extends Component {
                   <Tab.Pane eventKey="first">
                     <h4 className="text-light">Simple</h4>
                     <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Autem provident est earum harum recusandae hic nemo, natus
-                      illo, ut ad incidunt, deserunt laborum suscipit magni unde
-                      aliquam. Dolore, soluta asperiores? Lorem ipsum dolor sit
-                      amet consectetur adipisicing elit. Odit hic, illo eligendi
-                      earum tempora repellendus nobis atque obcaecati blanditiis
-                      unde labore sequi praesentium facere suscipit. Odit
-                      numquam a tenetur atque. Lorem ipsum dolor sit amet
-                      consectetur adipisicing elit. Autem eaque unde molestias,
-                      soluta sint magnam ratione natus, omnis voluptas eos, illo
-                      cum? Corporis aliquid doloremque esse! Ullam
-                      exercitationem accusamus dignissimos?
+                      Easy for your audience to learn about you, simple for you to set up.
                     </p>
+                    <Image src={free} alt="free" fluid/>
                   </Tab.Pane>
                   <Tab.Pane eventKey="second">
                     <h4 className="text-light">Professional</h4>
                     <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Autem provident est earum harum recusandae hic nemo, natus
-                      illo, ut ad incidunt, deserunt laborum suscipit magni unde
-                      aliquam. Dolore, soluta asperiores? Lorem ipsum dolor sit
-                      amet consectetur adipisicing elit. Odit hic, illo eligendi
-                      earum tempora repellendus nobis atque obcaecati blanditiis
-                      unde labore sequi praesentium facere suscipit. Odit
-                      numquam a tenetur atque. Lorem ipsum dolor sit amet
-                      consectetur adipisicing elit. Autem eaque unde molestias,
-                      soluta sint magnam ratione natus, omnis voluptas eos, illo
-                      cum? Corporis aliquid doloremque esse! Ullam
-                      exercitationem accusamus dignissimos?
+                      Take control and centralize your online presence.
                     </p>
+                    <Image src={domain} alt="domain" fluid/>
                   </Tab.Pane>
                   <Tab.Pane eventKey="third">
                     <h4 className="text-light">One link to share</h4>
                     <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Autem provident est earum harum recusandae hic nemo, natus
-                      illo, ut ad incidunt, deserunt laborum suscipit magni unde
-                      aliquam. Dolore, soluta asperiores? Lorem ipsum dolor sit
-                      amet consectetur adipisicing elit. Odit hic, illo eligendi
-                      earum tempora repellendus nobis atque obcaecati blanditiis
-                      unde labore sequi praesentium facere suscipit. Odit
-                      numquam a tenetur atque. Lorem ipsum dolor sit amet
-                      consectetur adipisicing elit. Autem eaque unde molestias,
-                      soluta sint magnam ratione natus, omnis voluptas eos, illo
-                      cum? Corporis aliquid doloremque esse! Ullam
-                      exercitationem accusamus dignissimos?
+                      Use your link everywhere to promote yourself.
                     </p>
+                    <Image src={linkshare} alt="linkshare" fluid/>
                   </Tab.Pane>
                   <Tab.Pane eventKey="fourth">
                     <h4 className="text-light">Resume download</h4>
                     <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Autem provident est earum harum recusandae hic nemo, natus
-                      illo, ut ad incidunt, deserunt laborum suscipit magni unde
-                      aliquam. Dolore, soluta asperiores? Lorem ipsum dolor sit
-                      amet consectetur adipisicing elit. Odit hic, illo eligendi
-                      earum tempora repellendus nobis atque obcaecati blanditiis
-                      unde labore sequi praesentium facere suscipit. Odit
-                      numquam a tenetur atque. Lorem ipsum dolor sit amet
-                      consectetur adipisicing elit. Autem eaque unde molestias,
-                      soluta sint magnam ratione natus, omnis voluptas eos, illo
-                      cum? Corporis aliquid doloremque esse! Ullam
-                      exercitationem accusamus dignissimos?
+                      Download your resume in a second.
                     </p>
+                    <Image src={resume} alt="resume" fluid/>
                   </Tab.Pane>
                   <Tab.Pane eventKey="fifth">
                     <h4 className="text-light">Contact form</h4>
                     <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Autem provident est earum harum recusandae hic nemo, natus
-                      illo, ut ad incidunt, deserunt laborum suscipit magni unde
-                      aliquam. Dolore, soluta asperiores? Lorem ipsum dolor sit
-                      amet consectetur adipisicing elit. Odit hic, illo eligendi
-                      earum tempora repellendus nobis atque obcaecati blanditiis
-                      unde labore sequi praesentium facere suscipit. Odit
-                      numquam a tenetur atque. Lorem ipsum dolor sit amet
-                      consectetur adipisicing elit. Autem eaque unde molestias,
-                      soluta sint magnam ratione natus, omnis voluptas eos, illo
-                      cum? Corporis aliquid doloremque esse! Ullam
-                      exercitationem accusamus dignissimos?
+                      Clients can contact you directly in your portfolio page
                     </p>
+                    <Image src={contacts} alt="contacts" fluid/>
                   </Tab.Pane>
                 </Tab.Content>
               </Col>
