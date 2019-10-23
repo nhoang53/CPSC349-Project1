@@ -1,3 +1,4 @@
 /vendor
 /public/images/*
 !/public/images/.gitkeep
+!/public/images/*-issues.PNG
