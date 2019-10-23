@@ -23,7 +23,7 @@
   height: 30vh;
 }
 
-Container{
+Container {
   background-image: image();
 }
 
@@ -34,9 +34,9 @@ Container{
 }
 
 .bg {
-background-image: url("images/background2.jpg");
-background-position: center;
-background-repeat: no-repeat;
-background-size: cover;
-height: 90vh;
+  background-image: url("images/background2.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 50vh;
 }

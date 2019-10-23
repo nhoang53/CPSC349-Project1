@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { getCurrentUser } from "services/auth";
+import { getCurrentUser, login } from "services/auth";
 import { apiUrl } from "config.json";
 import {
   Row,
@@ -21,6 +21,7 @@ export default class MainSettings extends Component {
       validated: false,
       checking: false,
       error: "",
+      id: "",
       fullName: "",
       email: "",
       image: null,
@@ -56,6 +57,7 @@ export default class MainSettings extends Component {
       const imageUrl = apiUrl + user.image;
 
       this.setState({
+        id: user.id,
         fullName: user.fullName,
         email: user.email,
         image: imageUrl,
@@ -216,6 +218,8 @@ export default class MainSettings extends Component {
       try {
         const data = new FormData(form);
 
+        data.append("id", this.state.id);
+
         let response = await axios.post(apiUrl + "/user/update.php", data, {
           headers: {
             "content-type": "multipart/form-data"
@@ -225,6 +229,8 @@ export default class MainSettings extends Component {
         if (response.status === 200) {
           this.setState({ checking: false });
 
+          login(response.data.jwt);
+
           this.props.history.push("/user/" + data.link);
         } else {
           this.setState({
@@ -233,7 +239,6 @@ export default class MainSettings extends Component {
           });
         }
       } catch (error) {
-        console.log(error.response);
         this.setState({
           checking: false,
           error: "An error has occured. Please try again later."

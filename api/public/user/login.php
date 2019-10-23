@@ -51,7 +51,6 @@ if (!empty($_POST["email"]) &&
                 array(
                     "message" => "Success.",
                     "jwt" => $jwt,
-                    "projects" => $user->projects,
                 )
             );
         } else {
