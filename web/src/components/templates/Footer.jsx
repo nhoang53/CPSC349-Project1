@@ -25,9 +25,6 @@ export default class Footer extends Component {
             <Col md="3" className="text-center text-md-left mb-4 mb-md-0">
               <h6 className="border-bottom pt-md-0 py-2">Company</h6>
               <Nav className="flex-column">
-                <LinkContainer exact to="/about">
-                  <Nav.Link>About Us</Nav.Link>
-                </LinkContainer>
                 <LinkContainer exact to="/contact">
                   <Nav.Link>Contact Us</Nav.Link>
                 </LinkContainer>
