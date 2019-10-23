@@ -30,7 +30,6 @@ if (!empty($_POST["fullName"]) &&
 
         if ($user->exists("email", $_POST["email"])) {
             if (move_uploaded_file($imageTmpName, $uploadName)) {
-
                 $user->fullName = $_POST["fullName"];
                 $user->email = $_POST["email"];
                 //$user->password = $_POST["password"];

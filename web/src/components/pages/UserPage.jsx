@@ -81,6 +81,16 @@ export default class UserPage extends Component {
                 <Row>
                   <Col>{content}</Col>
                 </Row>
+                <Row>
+                  <Col className="text-center">
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-twitter"></a>
+                    <a href="#" class="fa fa-linkedin"></a>
+                    <a href="#" class="fa fa-youtube"></a>
+                    <a href="#" class="fa fa-instagram"></a>
+                    <a href="#" class="fa fa-"></a>
+                  </Col>
+                </Row>
               </Col>
             </Row>
           </Container>
