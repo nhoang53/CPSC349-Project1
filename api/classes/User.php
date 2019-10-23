@@ -24,6 +24,15 @@ class User
     public $youtube;
     public $projects;
 
+    // for $projects
+    public $proID;
+    //public userID;
+    public $proTitle;
+    public $proImage;
+    public $proSummary;
+    public $proDemo;
+    public $proCode;
+
     public function __construct($db)
     {
         $this->db = $db;
@@ -80,9 +89,9 @@ class User
                       {$passwordSet},
                       image=:image,
                       link=:link,
-                      summary=:summary,
                       location=:location,
                       ocupation=:ocupation,
+                      summary=:summary,
                       pro=:pro,
                       github=:gihub,
                       linkedIn=:linkedIn
@@ -230,4 +239,40 @@ class User
 
         return false;
     }
+
+    public function createProjects()
+    {
+        $query = "INSERT INTO " . $this->$projectsTable . "
+              SET user_id = :user_id,
+                  title = :tile,
+                  image = :image,
+                  summary = :summary,
+                  demo = :demo,
+                  code = :code";
+
+        $stmt = $this->db->prepare($query);
+
+        //$this->user_id = htmlspecialchars(strip_tags($this->id));
+        $this->proTitle = htmlspecialchars(strip_tags($this->$proTitle));
+        $this->proImage = htmlspecialchars(strip_tags($this->$proImage));
+        $this->proSummary = htmlspecialchars(strip_tags($this->$proSummary));
+        $this->proDemo = htmlspecialchars(strip_tags($this->preDemo));
+        $this->proCode = htmlspecialchars(strip_tags($this->proCode));
+
+        $stmt->bindParam(":user_id", $this->id);
+        $stmt->bindParam(":title", $this->proTitle);
+        $stmt->bindParam(':image', $this->proImage);
+        $stmt->bindParam(":summary", $this->proSummary);
+        $stmt->bindParam(":demo", $this->proDemo);
+        $stmt->bindParam(":code", $this->proCode);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+
+        return false;
+    }
+
+
+
 }
